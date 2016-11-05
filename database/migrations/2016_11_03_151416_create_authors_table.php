@@ -14,6 +14,8 @@ class CreateAuthorsTable extends Migration
     public function up()
     {
         Schema::create('authors', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+
             $table->increments('id');
             $table->string('first_name', 50);
             $table->string('middle_name', 50)->nullable();

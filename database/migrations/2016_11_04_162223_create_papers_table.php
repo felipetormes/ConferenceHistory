@@ -14,6 +14,8 @@ class CreatePapersTable extends Migration
     public function up()
     {
         Schema::create('papers', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+
             $table->increments('id');
             $table->string('paper_title');
             $table->timestamps();

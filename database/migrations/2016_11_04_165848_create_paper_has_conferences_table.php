@@ -14,6 +14,8 @@ class CreatePaperHasConferencesTable extends Migration
     public function up()
     {
         Schema::create('paper_has_conferences', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+
             $table->integer('paper_id')->unsigned();
             $table->integer('conference_id')->unsigned();
 

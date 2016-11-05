@@ -14,6 +14,8 @@ class CreateEditionsTable extends Migration
     public function up()
     {
         Schema::create('editions', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+
             $table->increments('id');
             $table->integer('conference_id')->unsigned();
             $table->integer('edition');

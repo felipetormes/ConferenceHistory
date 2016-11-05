@@ -14,6 +14,8 @@ class CreateInstitutionsTables extends Migration
     public function up()
     {
         Schema::create('institutions', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+
             $table->increments('id');
             $table->string('institution_name', 200);
             $table->string('institution_country', 50);
@@ -28,6 +30,6 @@ class CreateInstitutionsTables extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('institutions');
     }
 }

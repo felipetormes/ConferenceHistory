@@ -14,6 +14,8 @@ class CreatePaperHasKeywordsTable extends Migration
     public function up()
     {
         Schema::create('paper_has_keywords', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+
             $table->integer('paper_id')->unsigned();
             $table->integer('keyword_id')->unsigned();
 

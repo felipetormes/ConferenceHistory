@@ -14,6 +14,8 @@ class CreateInstitutionsHasAuthorsTable extends Migration
     public function up()
     {
         Schema::create('institutions_has_authors', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+
             $table->integer('institution_id')->unsigned();
             $table->integer('author_id')->unsigned();
 

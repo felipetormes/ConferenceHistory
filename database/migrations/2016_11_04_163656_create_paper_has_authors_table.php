@@ -14,6 +14,8 @@ class CreatePaperHasAuthorsTable extends Migration
     public function up()
     {
         Schema::create('paper_has_authors', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+
             $table->integer('paper_id')->unsigned();
             $table->integer('author_id')->unsigned();
 
