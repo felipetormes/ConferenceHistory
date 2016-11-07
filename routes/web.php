@@ -16,5 +16,7 @@
     });
 
     Route::get('authors', 'AuthorController@index');
+
+    Route::get('authors/{id}', 'AuthorController@papers');
     
     Route::get('institutions', 'InstitutionController@index');
