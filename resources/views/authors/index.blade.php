@@ -37,11 +37,11 @@
 
                                 @foreach($authors as $author)
                                         <tr>
-                                                        <td>{{ $author->first_name }}</td>
-                                                        <td>{{ $author->middle_name }}</td>
-                                                        <td>{{ $author->last_name }}</td>
-                                                        <td>{{ $author->author_country }}</td>
-                                                        <td><a href="{{ url('/authors/' . $author->id) }}" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-search" aria-hidden="true"/></a></td>
+                                                <td>{{ $author->first_name }}</td>
+                                                <td>{{ $author->middle_name }}</td>
+                                                <td>{{ $author->last_name }}</td>
+                                                <td>{{ $author->author_country }}</td>
+                                                <td><a href="{{ url('/authors/' . $author->id) }}" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-search" aria-hidden="true"/></a></td>
                                         </tr>
                                 @endforeach
                         </table>

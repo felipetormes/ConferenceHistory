@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>List of Papers</title>
+    <title>List of authors</title>
 
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
@@ -20,28 +20,7 @@
 </head>
 <body>
 
-<div class="container">
-    <div class="panel panel-default">
-        <!-- Default panel contents -->
-        <div class="panel-heading">List of Papers</div>
 
-        <!-- Table -->
-        <table class="table">
-            <tr>
-                <th>Paper Title</th>
-                <th>Conference</th>
-                <th>Edition</th>
-            </tr>
-
-            <tr>
-                <td>{{ $author->papers->first()->paper_title }}</td>
-                <td>{{ $author->papers->first()->conferences->first()->conference_name }}</td>
-                <td>{{ $author->papers->first()->conferences->first()->edition->first()->year }}</td>
-            </tr>
-        </table>
-    </div>
-
-</div>
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

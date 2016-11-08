@@ -17,6 +17,8 @@
 
     Route::get('authors', 'AuthorController@index');
 
-    Route::get('authors/{id}', 'AuthorController@papers');
+    Route::get('authors/create', 'AuthorController@create');
+
+    Route::get('authors/{id}', 'AuthorController@info');
     
     Route::get('institutions', 'InstitutionController@index');
