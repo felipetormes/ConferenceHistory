@@ -21,8 +21,25 @@
 <body>
 
 {!! Form::open([
-    'route' => 'authors.store'
+    'route' => 'store'
 ]) !!}
+
+<legend>Data of the Paper</legend>
+
+<div class="form-horizontal">
+    <fieldset>
+
+        <div class="form-group">
+            {!! Form::label('paper_title', 'Paper Title:', ['class' => 'col-md-4 control-label']) !!}
+            <div class="col-md-4">
+                {!! Form::text('paper_title', null, ['class' => 'form-control input-md', 'placeholder' => 'Paper Title']) !!}
+            </div>
+        </div>
+    </fieldset>
+</div>
+
+
+<legend>Data of the Authors</legend>
 
 <div class="form-horizontal">
     <fieldset>
@@ -56,15 +73,29 @@
         </div>
 
         <div class="form-group">
-            {!! Form::label('paper_title', 'Paper Title:', ['class' => 'col-md-4 control-label']) !!}
+            {!! Form::label('institution_name', 'Institution Name:', ['class' => 'col-md-4 control-label']) !!}
             <div class="col-md-4">
-                {!! Form::text('paper_title', null, ['class' => 'form-control input-md']) !!}
+                {!! Form::text('institution_name', null, ['class' => 'form-control input-md']) !!}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('institution_country', 'Institution Country:', ['class' => 'col-md-4 control-label']) !!}
+            <div class="col-md-4">
+                {!! Form::text('institution_country', null, ['class' => 'form-control input-md']) !!}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('department_name', 'Department Name:', ['class' => 'col-md-4 control-label']) !!}
+            <div class="col-md-4">
+                {!! Form::text('department_name', null, ['class' => 'form-control input-md']) !!}
             </div>
         </div>
 
         {!! Form::label('', '', ['class' => 'col-md-4 control-label']) !!}
         <div class="col-md-4">
-            {!! Form::submit('Create New Author', ['class' => 'btn btn-primary']) !!}
+            {!! Form::submit('Send', ['class' => 'btn btn-primary']) !!}
         </div>
 
     </fieldset>

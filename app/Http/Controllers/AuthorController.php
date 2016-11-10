@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Author;
+use App\Paper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -22,12 +23,7 @@ class AuthorController extends Controller
         return view('authors.index', compact('authors'));
     }
 
-    public function create()
-    {
-        return view('authors.create');
-    }
-
-    public function info($id)
+    public function show($id)
     {
         $author = Author::find($id);
 

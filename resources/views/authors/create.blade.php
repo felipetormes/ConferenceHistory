@@ -20,6 +20,57 @@
 </head>
 <body>
 
+{!! Form::open([
+    'route' => 'authors.store'
+]) !!}
+
+<div class="form-horizontal">
+    <fieldset>
+
+<div class="form-group">
+    {!! Form::label('first_name', 'First Name:', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-4">
+    {!! Form::text('first_name', null, ['class' => 'form-control input-md', 'placeholder' => 'First Name']) !!}
+    </div>
+</div>
+
+<div class="form-group">
+    {!! Form::label('middle_name', 'Middle Name:', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-4">
+    {!! Form::text('middle_name', null, ['class' => 'form-control input-md']) !!}
+    </div>
+</div>
+
+<div class="form-group">
+    {!! Form::label('last_name', 'Last Name:', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-4">
+    {!! Form::text('last_name', null, ['class' => 'form-control input-md']) !!}
+    </div>
+</div>
+
+<div class="form-group">
+    {!! Form::label('author_country', 'Author Coutry:', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-4">
+    {!! Form::text('author_country', null, ['class' => 'form-control input-md']) !!}
+    </div>
+</div>
+
+        <div class="form-group">
+            {!! Form::label('paper_title', 'Paper Title:', ['class' => 'col-md-4 control-label']) !!}
+            <div class="col-md-4">
+                {!! Form::text('paper_title', null, ['class' => 'form-control input-md']) !!}
+            </div>
+        </div>
+
+        {!! Form::label('', '', ['class' => 'col-md-4 control-label']) !!}
+        <div class="col-md-4">
+    {!! Form::submit('Create New Author', ['class' => 'btn btn-primary']) !!}
+        </div>
+
+    </fieldset>
+</div>
+
+{!! Form::close() !!}
 
 
 

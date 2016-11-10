@@ -11,14 +11,18 @@
 |
 */
 
-    Route::get('/', function () {
-        return view('welcome');
-    });
+   // Route::get('/', function () {
+      //  return view('welcome');
+   // });
 
-    Route::get('authors', 'AuthorController@index');
+    Route::resource('/', 'AppController');
 
-    Route::get('authors/create', 'AuthorController@create');
+    Route::resource('authors', 'AuthorController');
 
-    Route::get('authors/{id}', 'AuthorController@info');
+    //Route::get('/authors', 'AuthorController@index');
+
+    //Route::post('/authors/create', 'AuthorController@create');
+
+    //Route::get('/authors/{id}', 'AuthorController@info');
     
     Route::get('institutions', 'InstitutionController@index');
