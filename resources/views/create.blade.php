@@ -35,6 +35,41 @@
                 {!! Form::text('paper_title', null, ['class' => 'form-control input-md', 'placeholder' => 'Paper Title']) !!}
             </div>
         </div>
+
+        <div class="form-group">
+            {!! Form::label('conference_name', 'Conference Name:', ['class' => 'col-md-4 control-label']) !!}
+            <div class="col-md-4">
+                {!! Form::text('conference_name', null, ['class' => 'form-control input-md', 'placeholder' => 'Conference Name']) !!}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('edition', 'Edition Number:', ['class' => 'col-md-4 control-label']) !!}
+            <div class="col-md-4">
+                {!! Form::text('edition', null, ['class' => 'form-control input-md', 'placeholder' => 'Edition Number']) !!}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('host_city', 'Host City:', ['class' => 'col-md-4 control-label']) !!}
+            <div class="col-md-4">
+                {!! Form::text('host_city', null, ['class' => 'form-control input-md', 'placeholder' => 'Host City']) !!}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('host_country', 'Host Country:', ['class' => 'col-md-4 control-label']) !!}
+            <div class="col-md-4">
+                {!! Form::text('host_country', null, ['class' => 'form-control input-md', 'placeholder' => 'Host Country']) !!}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('year', 'Edition Year:', ['class' => 'col-md-4 control-label']) !!}
+            <div class="col-md-4">
+                {!! Form::text('year', null, ['class' => 'form-control input-md', 'placeholder' => 'Edition Year']) !!}
+            </div>
+        </div>
     </fieldset>
 </div>
 
@@ -54,42 +89,42 @@
         <div class="form-group">
             {!! Form::label('middle_name', 'Middle Name:', ['class' => 'col-md-4 control-label']) !!}
             <div class="col-md-4">
-                {!! Form::text('middle_name', null, ['class' => 'form-control input-md']) !!}
+                {!! Form::text('middle_name', null, ['class' => 'form-control input-md', 'placeholder' => 'Middle Name']) !!}
             </div>
         </div>
 
         <div class="form-group">
             {!! Form::label('last_name', 'Last Name:', ['class' => 'col-md-4 control-label']) !!}
             <div class="col-md-4">
-                {!! Form::text('last_name', null, ['class' => 'form-control input-md']) !!}
+                {!! Form::text('last_name', null, ['class' => 'form-control input-md', 'placeholder' => 'Last Name']) !!}
             </div>
         </div>
 
         <div class="form-group">
             {!! Form::label('author_country', 'Author Coutry:', ['class' => 'col-md-4 control-label']) !!}
             <div class="col-md-4">
-                {!! Form::text('author_country', null, ['class' => 'form-control input-md']) !!}
+                {!! Form::text('author_country', null, ['class' => 'form-control input-md', 'placeholder' => 'Author Coutry']) !!}
             </div>
         </div>
 
         <div class="form-group">
             {!! Form::label('institution_name', 'Institution Name:', ['class' => 'col-md-4 control-label']) !!}
             <div class="col-md-4">
-                {!! Form::text('institution_name', null, ['class' => 'form-control input-md']) !!}
+                {!! Form::text('institution_name', null, ['class' => 'form-control input-md', 'placeholder' => 'Institution Name']) !!}
             </div>
         </div>
 
         <div class="form-group">
             {!! Form::label('institution_country', 'Institution Country:', ['class' => 'col-md-4 control-label']) !!}
             <div class="col-md-4">
-                {!! Form::text('institution_country', null, ['class' => 'form-control input-md']) !!}
+                {!! Form::text('institution_country', null, ['class' => 'form-control input-md', 'placeholder' => 'Institution Country']) !!}
             </div>
         </div>
 
         <div class="form-group">
             {!! Form::label('department_name', 'Department Name:', ['class' => 'col-md-4 control-label']) !!}
             <div class="col-md-4">
-                {!! Form::text('department_name', null, ['class' => 'form-control input-md']) !!}
+                {!! Form::text('department_name', null, ['class' => 'form-control input-md', 'placeholder' => 'Department Name']) !!}
             </div>
         </div>
 

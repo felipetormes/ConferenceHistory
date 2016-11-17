@@ -19,6 +19,8 @@
 
     Route::resource('authors', 'AuthorController');
 
+    Route::resource('papers', 'PaperController');
+
     //Route::get('/authors', 'AuthorController@index');
 
     //Route::post('/authors/create', 'AuthorController@create');
