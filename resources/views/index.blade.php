@@ -1,91 +1,98 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Find Papers</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/skel.min.js"></script>
+    <script src="js/skel-layers.min.js"></script>
+    <script src="js/init.js"></script>
+    <noscript>
+        <link rel="stylesheet" href="css/skel.css" />
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/style-xlarge.css" />
+    </noscript>
+</head>
+<body id="top">
 
-        <title>Laravel</title>
+<!-- Header -->
+<header id="header" class="skel-layers-fixed">
+    <h1><a href="/">Find Papers</a></h1>
+    <nav id="nav">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Search</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+<!-- Banner -->
+<section id="banner">
+    <div class="inner">
+        <h2>This is Find Papers</h2>
+        <p>Where you can find papers of many conferences</p>
+        <ul class="actions">
+            <li><a href="#login" class="button big special">Sign In</a></li>
+            <li><a href="#about" class="button big special">About</a></li>
+        </ul>
+    </div>
+</section>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+<!-- One -->
+<section id="one" class="wrapper style1">
+    <header class="major">
+        <h2>Body</h2>
+        <p>Body Description</p>
+    </header>
+</section>
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    <a href="{{ url('/login') }}">Login</a>
-                    <a href="{{ url('/register') }}">Register</a>
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+<!-- Footer -->
+<footer id="footer">
+    <div class="container">
+        <div class="row double">
+            <div class="6u">
+                <div class="row collapse-at-2">
+                    <div class="6u">
+                        <h3>Accumsan</h3>
+                        <ul class="alt">
+                            <li><a href="#">Nascetur nunc varius</a></li>
+                            <li><a href="#">Vis faucibus sed tempor</a></li>
+                            <li><a href="#">Massa amet lobortis vel</a></li>
+                            <li><a href="#">Nascetur nunc varius</a></li>
+                        </ul>
+                    </div>
+                    <div class="6u">
+                        <h3>Faucibus</h3>
+                        <ul class="alt">
+                            <li><a href="#">Nascetur nunc varius</a></li>
+                            <li><a href="#">Vis faucibus sed tempor</a></li>
+                            <li><a href="#">Massa amet lobortis vel</a></li>
+                            <li><a href="#">Nascetur nunc varius</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+            <div class="6u">
+                <h2>Aliquam Interdum</h2>
+                <p>Blandit nunc tempor lobortis nunc non. Mi accumsan. Justo aliquet massa adipiscing cubilia eu accumsan id. Arcu accumsan faucibus vis ultricies adipiscing ornare ut. Mi accumsan justo aliquet.</p>
+                <ul class="icons">
+                    <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                    <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+                    <li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+                    <li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li>
+                </ul>
+            </div>
         </div>
-    </body>
+        <ul class="copyright">
+            <li>&copy; Untitled. All rights reserved.</li>
+        </ul>
+    </div>
+</footer>
+
+</body>
 </html>
