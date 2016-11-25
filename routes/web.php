@@ -20,11 +20,7 @@
     Route::resource('authors', 'AuthorController');
 
     Route::resource('papers', 'PaperController');
-
-    //Route::get('/authors', 'AuthorController@index');
-
-    //Route::post('/authors/create', 'AuthorController@create');
-
-    //Route::get('/authors/{id}', 'AuthorController@info');
     
     Route::get('institutions', 'InstitutionController@index');
+    
+    Route::get('search', 'AppController@search');
