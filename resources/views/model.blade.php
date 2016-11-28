@@ -5,17 +5,19 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-    <!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/skel.min.js"></script>
-    <script src="js/skel-layers.min.js"></script>
-    <script src="js/init.js"></script>
-    <script src="js/bootstrap.js"></script>
+    <!--[if lte IE 8]><script src="../../js/html5shiv.js"></script><![endif]-->
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/skel.min.js"></script>
+    <script src="../../js/skel-layers.min.js"></script>
+    <script src="../../js/init.js"></script>
+    <script src="../../js/bootstrap.js"></script>
     <noscript>
-        <link rel="stylesheet" href="css/skel.css" />
-        <link rel="stylesheet" href="css/style.css" />
-        <link rel="stylesheet" href="css/style-xlarge.css" />
-        <link rel="stylesheet" href="css/bootstrap-theme.css"/>
+        <link rel="stylesheet" href="../../css/skel.css" />
+        <link rel="stylesheet" href="../../css/style.css" />
+        <link rel="stylesheet" href="../../css/style-xlarge.css" />
+        <link rel="stylesheet" href="../../css/bootstrap.css"/>
+        <link rel="stylesheet" href="../../css/style.css"/>
+        <link rel="stylesheet" href="../../css/style-xlarge.css"/>
     </noscript>
 </head>
 <body id="top">
@@ -27,7 +29,7 @@
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="#">About</a></li>
-            <li><a href="#">Search</a></li>
+            <li><a href="search">Search</a></li>
             <li><a href="#">Contact</a></li>
         </ul>
     </nav>
@@ -38,7 +40,8 @@
 
 <!-- One -->
 <section id="one" class="wrapper style1">
-    @yield('content')
+    @section('content')
+    @show
 </section>
 
 <!-- Footer -->
