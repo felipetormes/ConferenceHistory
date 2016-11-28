@@ -28,7 +28,7 @@ class AppController extends Controller
             ['paper_title', '=', $input_paper['paper_title']]
         ])->get();
 
-        if (empty($paper_exists)){
+        if ($paper_exists == '[]'){
             $paper = Paper::create($input_paper);
         }
         else{
@@ -67,10 +67,10 @@ class AppController extends Controller
     public function search(Request $request){
         $input_search = $request->only('fname');
         
-        $author = Author::where([
-            ['first_name', '=', $input_search['fname']]
+        $authors = Author::where([
+            ['first_name', 'like', '%'.$input_search['fname'].'%']
         ])->get();
 
-        return view('search', compact('author'));
+        return view('authors.index', compact('authors'));
     }
 }

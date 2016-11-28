@@ -36,7 +36,7 @@ class AuthorController extends Controller
             ->where('authors.id', '=', $id)
             ->get();*/
 
-        return view('authors.info', compact('author'));
+        return view('papers.index', compact('author'));
     }
 }
 
