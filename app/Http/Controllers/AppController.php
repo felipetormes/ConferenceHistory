@@ -63,14 +63,4 @@ class AppController extends Controller
 
         return redirect()->back();
     }
-
-    public function search(Request $request){
-        $input_search = $request->only('fname');
-        
-        $authors = Author::where([
-            ['first_name', 'like', '%'.$input_search['fname'].'%']
-        ])->get();
-
-        return view('authors.index', compact('authors'));
-    }
 }
