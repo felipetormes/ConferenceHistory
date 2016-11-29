@@ -17,10 +17,14 @@
 
     Route::resource('/', 'AppController');
 
-    Route::resource('authors', 'AuthorController');
+    //Route::resource('papers', 'PaperController');
+    
+    //Route::get('institutions', 'InstitutionController@index');
+    
+    Route::get('search/author', 'AuthorController@search');
 
-    Route::resource('papers', 'PaperController');
-    
-    Route::get('institutions', 'InstitutionController@index');
-    
-    Route::get('search', 'AppController@search');
+    Route::get('search/author/{id}', 'AuthorController@papers');
+
+    Route::get('search/paper', 'PaperController@search');
+
+    Route::get('search/paper/{id}', 'PaperController@authors');
