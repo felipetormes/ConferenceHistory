@@ -899,16 +899,17 @@
 			color: #666f77;
 			font-weight: 500;
 			height: inherit;
-			left: 1.25em;
+			left: 0.5em;
 			line-height: inherit;
 			margin: 0;
 			padding: 0;
 			position: absolute;
-			top: 0;
+			top: -0.15em;
 		}
 
 			#header h1 a {
-				font-size: 1.25em;
+				font-size: 0.5em;
+				text-decoration: none;
 			}
 
 		#header nav {
