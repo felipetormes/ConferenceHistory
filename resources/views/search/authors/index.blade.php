@@ -3,6 +3,15 @@
         @section('title', 'Authors')
 
         @section('content')
+                <div class="container">
+                        <div class="row">
+
+                                <form method="get">
+                                        First name: <input type="text" name="fname">
+                                        <input type="submit" value="Submit">
+                                </form>
+                        </div>
+                </div>
 
                 <div class="container">
                         <div class="panel panel-default">
@@ -25,7 +34,7 @@
                                                         <td>{{ $author->middle_name }}</td>
                                                         <td>{{ $author->last_name }}</td>
                                                         <td>{{ $author->author_country }}</td>
-                                                        <td><a href="{{ url('/authors/' . $author->id) }}" class="btn btn-default btn-xs"><span class="fa fa-search" aria-hidden="true"/></a></td>
+                                                        <td><a href="{{ url('/search/author/' . $author->id) }}" class="btn btn-default btn-xs"><span class="fa fa-search" aria-hidden="true"/></a></td>
                                                 </tr>
                                         @endforeach
                                 </table>

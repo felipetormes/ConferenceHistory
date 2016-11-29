@@ -23,20 +23,23 @@ class AuthorController extends Controller
         return view('authors.index', compact('authors'));
     }
 
-    public function show($id)
+    public function papers($id)
     {
         $author = Author::find($id);
 
-        //$papers = $author->papers->all();
+        $papers = $author->papers;
+        
+        return view('search.papers.index', compact('papers'));
+    }
 
-        /*$papers = DB::table('institutions')
-            ->join('institutions_has_authors', 'institutions.id', '=', 'institutions_has_authors.institution_id')
-            ->join('authors', 'institutions_has_authors.author_id', '=', 'authors.id')
-            ->select('institutions.institution_name')
-            ->where('authors.id', '=', $id)
-            ->get();*/
+    public function search(Request $request){
+        $input_search = $request->only('fname');
 
-        return view('papers.index', compact('author'));
+        $authors = Author::where([
+            ['first_name', 'like', '%'.$input_search['fname'].'%']
+        ])->get();
+
+        return view('search.authors.index', compact('authors'));
     }
 }
 
