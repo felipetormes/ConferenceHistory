@@ -18,9 +18,9 @@
             </tr>
 
             <tr>
-                <td>{{ $author->papers->first()->paper_title }}</td>
-                <td>{{ $author->papers->first()->conferences->first()->conference_name }}</td>
-                <td>{{ $author->papers->first()->conferences->first()->edition->first()->year }}</td>
+                <td>{{ $papers->papers->first()->paper_title }}</td>
+                <td>{{ $papers->papers->first()->conferences->first()->conference_name }}</td>
+                <td>{{ $papers->papers->first()->conferences->first()->edition->first()->year }}</td>
             </tr>
         </table>
     </div>
