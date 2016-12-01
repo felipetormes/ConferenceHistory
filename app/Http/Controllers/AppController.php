@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Author;
 use App\Conference;
+use App\Edition;
 use App\Institution;
 use App\Paper;
 use Illuminate\Http\Request;
@@ -37,7 +38,18 @@ class AppController extends Controller
 
         $input_edition = $request->only('edition', 'host_city', 'host_country', 'year');
 
-        $edition = $conference->edition()->create($input_edition);
+        $edition_exists = $conference->edition()->where([
+            ['edition', '=', $input_edition['edition']]
+        ])->get();
+
+        if ($edition_exists == '[]'){
+            $edition = Edition::create($edition_exists);
+            $edition->Conference()->associate($conference);
+        }
+        else{
+            $edition = $conference->edition()->find($edition_exists->first()->id);
+            $edition->Conference()->associate($conference);
+        }
 
         $input_paper = $request->only('paper_title');
 
@@ -51,8 +63,6 @@ class AppController extends Controller
         else{
             $paper = Paper::find($paper_exists->first()->id);
         }
-
-        $conference->papers()->attach($paper);
 
         $input_author = $request->only('first_name', 'middle_name', 'last_name', 'author_country');
 
