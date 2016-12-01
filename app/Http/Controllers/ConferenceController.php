@@ -35,7 +35,7 @@ class ConferenceController extends Controller
     {
         $edition = Edition::find($id);
 
-        $papers = $edition->papers;
+        $papers = $edition->paper;
 
         return view('search.papers.index', compact('papers'));
     }

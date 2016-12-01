@@ -31,4 +31,9 @@ class Paper extends Model
     {
         return $this->belongsToMany(Keyword::class, 'paper_has_keywords', 'paper_id', 'keyword_id');
     }
+
+    public function editions()
+    {
+        return $this->belongsTo(Edition::class);
+    }
 }

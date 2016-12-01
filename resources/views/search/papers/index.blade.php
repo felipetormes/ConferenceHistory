@@ -34,7 +34,7 @@
             @foreach($papers as $paper)
             <tr>
                 <td>{{ $paper->paper_title }}</td>
-                <td>{{ $paper->conferences->first()->conference_name  }}</td>
+                <td>{{ $paper->conferences->first()->conference_name }}</td>
                 <td>{{ $paper->conferences->first()->edition->first()->edition }}</td>
                 <td>{{ $paper->conferences->first()->edition->first()->host_city }}</td>
                 <td>{{ $paper->conferences->first()->edition->first()->host_country }}</td>

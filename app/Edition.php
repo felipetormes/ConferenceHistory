@@ -15,4 +15,9 @@ class Edition extends Model
     {
         return $this->belongsTo(Conference::class);
     }
+    
+    public function Paper()
+    {
+        return $this->hasMany(Paper::class);
+    }
 }
