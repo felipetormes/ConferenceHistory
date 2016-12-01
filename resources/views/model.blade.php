@@ -29,13 +29,13 @@
             <li>
                 <div class="dropdown">
                     <div class="btn btn-block dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        Dropdown
+                        Search
                         <span class="caret"></span>
                     </div>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                         <li><a href="../../../search/author">Author</a></li>
                         <li><a href="../../../search/paper">Paper</a></li>
-                        <li><a href="#">Conference</a></li>
+                        <li><a href="../../../search/conference">Conference</a></li>
                     </ul>
                 </div>
             </li>

@@ -28,3 +28,9 @@
     Route::get('search/paper', 'PaperController@search');
 
     Route::get('search/paper/{id}', 'PaperController@authors');
+
+    Route::get('search/conference', 'ConferenceController@search');
+
+    Route::get('search/conference/{id}', 'ConferenceController@editions');
+
+    Route::get('search/conference/edition/{id}', 'ConferenceController@papers');
