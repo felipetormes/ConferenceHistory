@@ -21,7 +21,7 @@
 
 <!-- Header -->
 <header id="header" class="skel-layers-fixed">
-    <h1><a href="/">Find Papers</a></h1>
+    <h1><a href="/">Conference History</a></h1>
     <nav id="nav">
         <ul>
             <li><a href="/">Home</a></li>
