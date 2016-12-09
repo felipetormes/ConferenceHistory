@@ -1,13 +1,13 @@
 @extends('model')
 
-        @section('title', 'Authors')
+        @section('title', 'Search Authors')
 
         @section('content')
                 <div class="container">
                         <div class="row">
 
                                 <form method="get">
-                                        First name: <input type="text" name="fname">
+                                        First Name: <input type="text" name="fname">
                                         <input type="submit" value="Submit">
                                 </form>
                         </div>
@@ -16,7 +16,7 @@
                 <div class="container">
                         <div class="panel panel-default">
                                 <!-- Default panel contents -->
-                                <div class="panel-heading">List of authors</div>
+                                <div class="panel-heading">List of Authors</div>
 
                                 <!-- Table -->
                                 <table class="table">

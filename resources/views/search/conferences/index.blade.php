@@ -1,13 +1,13 @@
 @extends('model')
 
-@section('title', 'Conferences')
+@section('title', 'Search Conferences')
 
 @section('content')
     <div class="container">
         <div class="row">
 
             <form method="get">
-                First name: <input type="text" name="conference_name">
+                Conference Name: <input type="text" name="conference_name">
                 <input type="submit" value="Submit">
             </form>
         </div>

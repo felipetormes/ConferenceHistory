@@ -1,6 +1,6 @@
 @extends('model')
 
-@section('title', 'Papers')
+@section('title', 'Search Papers')
 
 @section('content')
 

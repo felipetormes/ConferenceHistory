@@ -7,7 +7,7 @@
         <div class="row">
 
             <form method="get">
-                First name: <input type="text" name="conference_name">
+                Conference Name: <input type="text" name="conference_name">
                 <input type="submit" value="Submit">
             </form>
         </div>
