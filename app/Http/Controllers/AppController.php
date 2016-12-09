@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Author;
 use App\Conference;
+use App\Department;
 use App\Edition;
 use App\Institution;
 use App\Paper;
@@ -43,12 +44,10 @@ class AppController extends Controller
         ])->get();
 
         if ($edition_exists == '[]'){
-            $edition = Edition::create($edition_exists);
-            $edition->Conference()->associate($conference);
+            $edition = $conference->edition()->create($input_edition);
         }
         else{
             $edition = $conference->edition()->find($edition_exists->first()->id);
-            $edition->Conference()->associate($conference);
         }
 
         $input_paper = $request->only('paper_title');
@@ -59,6 +58,7 @@ class AppController extends Controller
 
         if ($paper_exists == '[]'){
             $paper = $edition->paper()->create($input_paper);
+            $paper->conferences()->attach($conference);
         }
         else{
             $paper = Paper::find($paper_exists->first()->id);
@@ -73,19 +73,39 @@ class AppController extends Controller
             ['author_country', '=', $input_author['author_country']]
         ])->get();
 
-        if (empty($author_exists)) {
-            $author = $paper->authors()->attach($author_exists->first()->id);
+        if ($author_exists == '[]') {
+            $author = $paper->authors()->create($input_author);
         }
         else{
-            $author = $paper->authors()->create($input_author);
+            $author = $paper->authors()->attach($author_exists->first()->id);
         }
 
 
         $input_institution = $request->only('institution_name', 'institution_country');
-        $institution = $paper->institutions()->create($input_institution);
+
+        $institution_exists = Institution::where([
+            ['institution_name', '=', $input_institution['institution_name']],
+            ['institution_country', '=', $input_institution['institution_country']]
+        ])->get();
+
+        if($institution_exists == '[]'){
+            $institution = $paper->institutions()->create($input_institution);
+            $institution->authors()->attach($author);
+        }
+        else{
+            $institution = $institution_exists->first();
+            $author->institutions()->attach($institution);
+        }
+
         $input_department = $request->only('department_name');
-        $institution->department()->create($input_department);
-        $institution->authors()->attach($author);
+
+        $department_exists = Department::where([
+            ['department_name', '=', $input_department['department_name']]
+        ])->get();
+
+        if($department_exists == '[]') {
+            $institution->department()->create($input_department);
+        }
 
         return redirect()->back();
     }
