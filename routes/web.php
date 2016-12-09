@@ -19,8 +19,6 @@
 
     //Route::resource('papers', 'PaperController');
     
-    //Route::get('institutions', 'InstitutionController@index');
-    
     Route::get('search/author', 'AuthorController@search');
 
     Route::get('search/author/{id}', 'AuthorController@papers');
@@ -34,3 +32,9 @@
     Route::get('search/conference/{id}', 'ConferenceController@editions');
 
     Route::get('search/conference/edition/{id}', 'ConferenceController@papers');
+
+    Route::get('search/institution', 'InstitutionController@search');
+
+    Route::get('search/institution/authors/{id}', 'InstitutionController@authors');
+
+    Route::get('search/institution/papers/{id}', 'InstitutionController@papers');

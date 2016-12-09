@@ -11,11 +11,32 @@ class InstitutionController extends Controller
     {
         $this->institution = $institution;
     }
+    
+    public function search(Request $request){
+        $input_search = $request->only('institution_name');
 
-    public function index()
+        $institutions = Institution::where([
+            ['institution_name', 'like', '%'.$input_search['institution_name'].'%']
+        ])->get();
+
+        return view('search.institutions.index', compact('institutions'));
+    }
+
+    public function authors($id)
     {
-        $institutions = $this->institution->all();
+        $institution = Institution::find($id);
 
-        return view('institutions.index')->with('institutions', $institutions);
+        $authors = $institution->authors;
+
+        return view('search.authors.index', compact('authors'));
+    }
+
+    public function papers($id)
+    {
+        $institution = Institution::find($id);
+
+        $papers = $institution->papers;
+
+        return view('search.papers.index', compact('papers'));
     }
 }

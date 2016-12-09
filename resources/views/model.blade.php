@@ -36,6 +36,7 @@
                         <li><a href="../../../search/author">Author</a></li>
                         <li><a href="../../../search/paper">Paper</a></li>
                         <li><a href="../../../search/conference">Conference</a></li>
+                        <li><a href="../../../search/institution">Institution</a></li>
                     </ul>
                 </div>
             </li>
