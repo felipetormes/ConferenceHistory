@@ -35,10 +35,10 @@
             <tr>
                 <td>{{ $paper->paper_title }}</td>
                 <td>{{ $paper->conferences->first()->conference_name }}</td>
-                <td>{{ $paper->conferences->first()->edition->first()->edition }}</td>
-                <td>{{ $paper->conferences->first()->edition->first()->host_city }}</td>
-                <td>{{ $paper->conferences->first()->edition->first()->host_country }}</td>
-                <td>{{ $paper->conferences->first()->edition->first()->year }}</td>
+                <td>{{ $paper->conferences->first()->edition->find($paper->edition_id)->edition }}</td>
+                <td>{{ $paper->conferences->first()->edition->find($paper->edition_id)->host_city }}</td>
+                <td>{{ $paper->conferences->first()->edition->find($paper->edition_id)->host_country }}</td>
+                <td>{{ $paper->conferences->first()->edition->find($paper->edition_id)->year }}</td>
                 <td><a href="{{ url('/search/paper/' . $paper->id) }}" class="btn btn-default btn-xs"><span class="fa fa-search" aria-hidden="true"/></a></td>
             </tr>
             @endforeach

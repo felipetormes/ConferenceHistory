@@ -94,11 +94,8 @@ class AppController extends Controller
         }
         else{
             $institution = $institution_exists->first();
-            $institution_has_papers = $institution->papers;
-            if($institution_has_papers != $paper){
-                $paper->institutions()->attach($institution);
-            }
-            $institution->authors()->attach($author);
+            $author->institutions()->attach($institution);
+            $institution->papers()->attach($paper);
         }
 
         $input_department = $request->only('department_name');
