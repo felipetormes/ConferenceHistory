@@ -92,10 +92,15 @@ class AppController extends Controller
             $institution = $paper->institutions()->create($input_institution);
             $institution->authors()->attach($author);
         }
-        else{
+        else if($author_exists == '[]' and $paper_exists == '[]'){
             $institution = $institution_exists->first();
             $author->institutions()->attach($institution);
             $institution->papers()->attach($paper);
+        }
+        else{
+            $institution = $institution_exists->first();
+            $institution->papers()->attach($paper);
+            $paper->authors()->attach($author);
         }
 
         $input_department = $request->only('department_name');
