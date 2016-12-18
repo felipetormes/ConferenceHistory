@@ -38,3 +38,7 @@
     Route::get('search/institution/authors/{id}', 'InstitutionController@authors');
 
     Route::get('search/institution/papers/{id}', 'InstitutionController@papers');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
