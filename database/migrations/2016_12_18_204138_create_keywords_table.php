@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddYearToEditionsTable extends Migration
+class CreateKeywordsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddYearToEditionsTable extends Migration
      */
     public function up()
     {
-        Schema::table('editions', function (Blueprint $table) {
-            $table->integer('year');
+        Schema::create('keywords', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+
+            $table->increments('id');
+            $table->string('keyword');
         });
     }
 
@@ -25,8 +28,6 @@ class AddYearToEditionsTable extends Migration
      */
     public function down()
     {
-        Schema::table('editions', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('keywords');
     }
 }

@@ -17,13 +17,11 @@ class CreateEditionsTable extends Migration
             $table->engine = 'InnoDB';
 
             $table->increments('id');
-            $table->integer('conference_id')->unsigned();
-            $table->integer('edition');
-            $table->string('host_city');
-            $table->string('host_country');
-
-            $table->foreign('conference_id')->references('id')->on('conferences')
-                ->onUpdate('cascade')->onDelete('cascade');
+            $table->string('edition_name', 500);
+            $table->string('host_city', 100);
+            $table->string('host_country', 100);
+            $table->date('initial_date');
+            $table->date('final_date');
         });
     }
 

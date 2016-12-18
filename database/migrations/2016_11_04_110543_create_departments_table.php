@@ -17,11 +17,8 @@ class CreateDepartmentsTable extends Migration
             $table->engine = 'InnoDB';
 
             $table->increments('id');
-            $table->integer('institution_id')->unsigned();
             $table->string('department_name', 300);
-
-            $table->foreign('institution_id')->references('id')->on('institutions')
-                ->onUpdate('cascade')->onDelete('cascade');
+            $table->string('department_country', 100);
         });
     }
 

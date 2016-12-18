@@ -18,8 +18,6 @@ class CreateInstitutionsTables extends Migration
 
             $table->increments('id');
             $table->string('institution_name', 200);
-            $table->string('institution_country', 50);
-            $table->timestamps();
         });
     }
 

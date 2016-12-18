@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddUniqueKeywordToKeywordsTable extends Migration
+class CreatePapersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddUniqueKeywordToKeywordsTable extends Migration
      */
     public function up()
     {
-        Schema::table('keywords', function (Blueprint $table) {
-            $table->unique('keyword')->change();
+        Schema::create('papers', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+
+            $table->increments('id');
+            $table->string('paper_title');
         });
     }
 
@@ -25,8 +28,6 @@ class AddUniqueKeywordToKeywordsTable extends Migration
      */
     public function down()
     {
-        Schema::table('keywords', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('papers');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddNotnullableForeignKeyIdEdition extends Migration
+class CreateConferencesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddNotnullableForeignKeyIdEdition extends Migration
      */
     public function up()
     {
-        Schema::table('papers', function (Blueprint $table) {
-            $table->integer('edition_id')->unsigned()->notnull()->after('id')->change();
+        Schema::create('conferences', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+
+            $table->increments('id');
+            $table->string('conference_name', 100);
         });
     }
 
@@ -25,8 +28,6 @@ class AddNotnullableForeignKeyIdEdition extends Migration
      */
     public function down()
     {
-        Schema::table('papers', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('conferences');
     }
 }
