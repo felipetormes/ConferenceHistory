@@ -8,10 +8,12 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title')</title>
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+    <link href="/css/sidebar.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -19,6 +21,8 @@
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/sidebar.js"></script>
 </head>
 <body>
     <div id="app">
@@ -36,7 +40,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name') }}
                     </a>
                 </div>
 
@@ -50,9 +54,14 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
+                            <li><a href="{{ url('#about') }}">About</a></li>
+                            <li><a href="{{ url('#contact') }}">Contact</a></li>
                             <li><a href="{{ url('/login') }}">Login</a></li>
                             <li><a href="{{ url('/register') }}">Register</a></li>
                         @else
+                            <li><a href="{{ url('/home') }}">Home</a></li>
+                            <li><a href="{{ url('#about') }}">About</a></li>
+                            <li><a href="{{ url('#contact') }}">Contact</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -78,7 +87,19 @@
             </div>
         </nav>
 
-        @yield('content')
+        <div class="container theme-showcase" role="main">
+
+            @yield('content')
+
+            <hr class="featurette-divider">
+
+            <!-- FOOTER -->
+            <footer>
+                <p class="pull-right"><a href="#">Back to top</a></p>
+                <p>&copy; 2016 Conference History</p>
+            </footer>
+
+        </div>
     </div>
 
     <!-- Scripts -->

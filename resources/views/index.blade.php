@@ -1,17 +1,13 @@
-@extends('model')
+@extends('layouts.app')
 
 @section('title', 'Conference History')
 
-@section('banner')
-    <!-- Banner -->
-    <section id="banner">
-        <div class="inner">
-            <h2>This is Conference History</h2>
-            <p>Where you can find papers of many conferences</p>
-            <ul class="actions">
-                <li><a href="#login" class="button big special">Contact</a></li>
-                <li><a href="#about" class="button big special">About</a></li>
-            </ul>
+@section('content')
+        <div class="jumbotron">
+            <div class="container">
+                <h1>Hello, user!</h1>
+                <p>Here you can find many statistics on articles published in conferences like NOMS and IM</p>
+                <p>Just sign in to get started!</p>
+            </div>
         </div>
-    </section>
 @endsection
