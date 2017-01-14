@@ -10,16 +10,14 @@ use App\Paper;
 class Institution extends Model
 {
     protected $fillable = ['institution_name', 'institution_country'];
-    public $timestamps = false;
-    protected $primaryKey = 'id';
 
-    public function departments()
+    public function department()
     {
-        return $this->belongsToMany(Department::class, 'connection_1s', 'inst_id', 'depart_id');
+        return $this->hasMany(Department::class);
     }
 
     public function authors()
     {
-        return $this->belongsToMany(Author::class, 'connection_1s', 'inst_id', 'author_id');
+        return $this->belongsToMany(Author::class, 'institutions_has_authors', 'institution_id', 'author_id');
     }
 }

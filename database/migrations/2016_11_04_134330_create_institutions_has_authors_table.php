@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDepartmentsTable extends Migration
+class CreateInstitutionsHasAuthorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,17 @@ class CreateDepartmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('departments', function (Blueprint $table) {
+        Schema::create('institutions_has_authors', function (Blueprint $table) {
             $table->engine = 'InnoDB';
 
-            $table->increments('id');
             $table->integer('institution_id')->unsigned();
-            $table->string('department_name', 300);
+            $table->integer('author_id')->unsigned();
+
+            $table->primary(['institution_id', 'author_id']);
 
             $table->foreign('institution_id')->references('id')->on('institutions')
+                ->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('author_id')->references('id')->on('authors')
                 ->onUpdate('cascade')->onDelete('cascade');
         });
     }
@@ -32,6 +35,6 @@ class CreateDepartmentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('departments');
+        Schema::drop('institutions_has_authors');
     }
 }

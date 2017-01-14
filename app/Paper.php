@@ -11,17 +11,15 @@ use App\Keyword;
 class Paper extends Model
 {
     protected $fillable = ['paper_title'];
-    public $timestamps = false;
-    protected $primaryKey = 'id';
 
-    public function conferences()
+    public function authors()
     {
-        return $this->belongsToMany(Conference::class, 'connection_2s', 'paper_id', 'conf_id');
+        return $this->belongsToMany(Author::class, 'paper_has_authors', 'paper_id', 'author_id');
     }
 
     public function editions()
     {
-        return $this->belongsToMany(Edition::class, 'connection_2s', 'paper_id', 'edi_id');
+        return $this->belongsTo(Edition::class);
     }
 
     public function keywords()

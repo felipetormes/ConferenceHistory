@@ -8,17 +8,15 @@ use App\Paper;
 
 class Author extends Model
 {
-    protected $fillable = ['first_name', 'middle_name', 'last_name'];
-    public $timestamps = false;
-    protected $primaryKey = 'id';
+    protected $fillable = ['first_name', 'middle_name', 'last_name', 'author_country'];
 
     public function institutions()
     {
-        return $this->belongsToMany(Institution::class, 'connection_1s', 'author_id', 'inst_id');
+        return $this->belongsToMany(Institution::class, 'institutions_has_authors', 'author_id', 'institution_id');
     }
 
-    public function departments()
+    public function papers()
     {
-        return $this->belongsToMany(Department::class, 'connection_1s', 'author_id', 'depart_id');
+        return $this->belongsToMany(Paper::class, 'paper_has_authors', 'author_id', 'paper_id');
     }
 }

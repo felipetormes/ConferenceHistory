@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateConnection3Table extends Migration
+class CreatePaperHasAuthorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,17 @@ class CreateConnection3Table extends Migration
      */
     public function up()
     {
-        Schema::create('connection_3s', function (Blueprint $table) {
+        Schema::create('paper_has_authors', function (Blueprint $table) {
             $table->engine = 'InnoDB';
 
-            $table->integer('connect_1_id')->unsigned();
-            $table->integer('connect_2_id')->unsigned();
+            $table->integer('paper_id')->unsigned();
+            $table->integer('author_id')->unsigned();
 
-            $table->primary(['connect_1_id', 'connect_2_id']);
+            $table->primary(['paper_id', 'author_id']);
 
-            $table->foreign('connect_1_id')->references('id')->on('connection_1s')
+            $table->foreign('paper_id')->references('id')->on('papers')
                 ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('connect_2_id')->references('id')->on('connection_2s')
+            $table->foreign('author_id')->references('id')->on('authors')
                 ->onUpdate('cascade')->onDelete('cascade');
         });
     }
@@ -35,6 +35,6 @@ class CreateConnection3Table extends Migration
      */
     public function down()
     {
-        Schema::drop('connection_3s');
+        Schema::drop('paper_has_authors');
     }
 }

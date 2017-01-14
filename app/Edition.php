@@ -7,17 +7,17 @@ use App\Conference;
 
 class Edition extends Model
 {
-    protected $fillable = ['edition_name', 'host_city', 'host_country', 'initial_date', 'final_date'];
+    protected $fillable = ['edition', 'host_city', 'host_country', 'year'];
     public $timestamps = false;
     protected $primaryKey = 'id';
 
-    public function conferences()
-    {
-        return $this->belongsToMany(Conference::class, 'connection_2s', 'edi_id', 'conf_id');
-    }
-
     public function papers()
     {
-        return $this->belongsToMany(Paper::class, 'connection_2s', 'edi_id', 'paper_id');
+        return $this->hasMany(Paper::class);
+    }
+
+    public function conferences()
+    {
+        return $this->belongsTo(Conference::class);
     }
 }

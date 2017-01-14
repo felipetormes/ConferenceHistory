@@ -13,15 +13,17 @@ class CreateEditionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('editions', function (Blueprint $table) {
+        Schema::create('conference_editions', function (Blueprint $table) {
             $table->engine = 'InnoDB';
 
             $table->increments('id');
-            $table->string('edition_name', 500);
-            $table->string('host_city', 100);
-            $table->string('host_country', 100);
-            $table->date('initial_date');
-            $table->date('final_date');
+            $table->integer('conference_id')->unsigned();
+            $table->integer('edition_name');
+            $table->string('host_city');
+            $table->string('host_country');
+
+            $table->foreign('conference_id')->references('id')->on('conferences')
+                ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -32,6 +34,6 @@ class CreateEditionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('editions');
+        Schema::dropIfExists('conference_editions');
     }
 }
