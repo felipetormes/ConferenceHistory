@@ -26,4 +26,9 @@ class Paper extends Model
     {
         return $this->belongsToMany(Keyword::class, 'paper_has_keywords', 'paper_id', 'keyword_id');
     }
+
+    public function institutions()
+    {
+        return $this->belongsToMany(Institution::class, 'paper_has_institutions', 'paper_id', 'institution_id');
+    }
 }

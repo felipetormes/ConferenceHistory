@@ -20,7 +20,7 @@ class CreatePapersTable extends Migration
             $table->string('paper_title');
             $table->integer('edition_id')->unsigned();
 
-            $table->foreign('edition_id')->references('id')->on('conference_editions')
+            $table->foreign('edition_id')->references('id')->on('editions')
                 ->onUpdate('cascade')->onDelete('cascade');
         });
     }

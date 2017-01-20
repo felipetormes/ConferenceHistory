@@ -20,4 +20,9 @@ class Institution extends Model
     {
         return $this->belongsToMany(Author::class, 'institutions_has_authors', 'institution_id', 'author_id');
     }
+
+    public function papers()
+    {
+        return $this->belongsToMany(Paper::class, 'paper_has_institutions', 'institution_id', 'paper_id');
+    }
 }
