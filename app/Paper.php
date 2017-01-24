@@ -12,9 +12,9 @@ class Paper extends Model
 {
     protected $fillable = ['paper_title'];
 
-    public function authors()
+    public function persons()
     {
-        return $this->belongsToMany(Author::class, 'paper_has_authors', 'paper_id', 'author_id');
+        return $this->belongsToMany(Person::class, 'authors', 'paper_id', 'person_id');
     }
 
     public function editions()
@@ -29,6 +29,6 @@ class Paper extends Model
 
     public function institutions()
     {
-        return $this->belongsToMany(Institution::class, 'paper_has_institutions', 'paper_id', 'institution_id');
+        return $this->belongsToMany(Institution::class, 'authors', 'paper_id', 'institution_id');
     }
 }
