@@ -10,6 +10,8 @@ use App\Institution;
 use App\Paper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use App\User;
+use App\Role;
 
 class AppController extends Controller
 {
@@ -113,6 +115,25 @@ class AppController extends Controller
             $institution->department()->create($input_department);
         }
 
+        return redirect()->back();
+    }
+
+    public function getAdminPage()
+    {
+        $users = User::all();
+        return view('admin', ['users' => $users]);
+    }
+
+    public function postAdminAssignRoles(Request $request)
+    {
+        $user = User::where('email', $request['email'])->first();
+        $user->roles()->detach();
+        if ($request['role_user']) {
+            $user->roles()->attach(Role::where('name', 'user')->first());
+        }
+        if ($request['role_admin']) {
+            $user->roles()->attach(Role::where('name', 'admin')->first());
+        }
         return redirect()->back();
     }
 }

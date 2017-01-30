@@ -42,3 +42,17 @@
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+    Route::get('/admin', [
+        'uses' => 'AppController@getAdminPage',
+        'as' => 'admin',
+        'middleware' => 'roles',
+        'roles' => ['admin']
+    ]);
+
+    Route::post('/admin/assign-roles', [
+        'uses' => 'AppController@postAdminAssignRoles',
+        'as' => 'admin.assign',
+        'middleware' => 'roles',
+        'roles' => ['Admin']
+    ]);
