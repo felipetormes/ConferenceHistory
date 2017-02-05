@@ -9,7 +9,10 @@
         "laravel/framework": "5.3.*",
         "doctrine/dbal": "^2.5",
         "twbs/bootstrap": "^3.3",
-        "laravelcollective/html": "^5.3"
+        "laravelcollective/html": "^5.3",
+        "laravel/scout": "v1.0.0",
+        "elasticsearch/elasticsearch": "^5.1",
+        "algolia/algoliasearch-client-php": "^1.13"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -43,7 +43,7 @@
 
         <div class="col-md-8 col-lg-8 col-xs-8 list">
 
-            
+
 
             <ul>
                 <li><a href='#a'>A</a></li>
