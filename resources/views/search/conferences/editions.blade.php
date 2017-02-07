@@ -54,7 +54,7 @@
                             @foreach($edition->papers as $paper)
                             <tr>
                                 <td>{{ $paper->paper_title }}</td>
-                                <td>{{ $edition->edition_name }}</td>
+                                <td>{{ $edition->name }}</td>
                             </tr>
                             @endforeach
                         @endforeach
@@ -74,7 +74,7 @@
                         </thead>
                         <tbody>
 
-                            @foreach($persons as $person)
+                            @foreach($persons->sort() as $person)
                                 <tr>
                                     <td>{{ $person->first_name }}</td>
                                     <td>{{ $person->middle_name }}</td>

@@ -32,7 +32,7 @@ class ConferenceController extends Controller
 
         foreach ($editions as $edition){
             foreach ($edition->papers as $paper) {
-                $persons = $paper->persons->union($persons);
+                $persons = collect($paper->persons)->merge($persons);
             }
         }
 
