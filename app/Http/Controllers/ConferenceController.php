@@ -28,7 +28,7 @@ class ConferenceController extends Controller
 
         $editions = $conference->edition;
 
-        return view('search.conferences.editions', compact('editions'));
+        return view('search.conferences.editions', compact('editions', 'conference'));
     }
 
     public function papers($id)

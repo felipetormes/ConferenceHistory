@@ -88,20 +88,8 @@
             </div>
         </nav>
 
-        <div class="container theme-showcase" role="main">
-
             @yield('content')
 
-            <hr class="featurette-divider">
-
-            <!-- FOOTER -->
-            <footer>
-                <p class="pull-right"><a href="#">Back to top</a></p>
-                <p>&copy; 2016 Conference History</p>
-            </footer>
-
-        </div>
-    </div>
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>

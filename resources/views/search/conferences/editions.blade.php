@@ -1,46 +1,111 @@
-@extends('model')
+@extends('layouts.app')
 
 @section('title', 'Conference Editions')
 
 @section('content')
-    <div class="container">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="css/metisMenu.min.css" rel="stylesheet">
+
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <div id="page-wrapper" class="container">
         <div class="row">
+            <label><input type="checkbox" id="editions" name="haha"/>Show Editions</label>
+            <label><input type="checkbox" id="papers" name="haha"/>Show Papers</label>
+            <label><input type="checkbox" id="authors" name="haha"/>Show Authors</label>
 
-            <form method="get">
-                Conference Name: <input type="text" name="conference_name">
-                <input type="submit" value="Submit">
-            </form>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="panel panel-default">
-            <!-- Default panel contents -->
-            <div class="panel-heading">List of Editions</div>
-
-            <!-- Table -->
-            <table class="table">
-                <tr>
-                    <th>Conference Name</th>
-                    <th>Edition Number</th>
-                    <th>Host City</th>
-                    <th>Host Country</th>
-                    <th>Edition Year</th>
-                    <th>Papers</th>
-                </tr>
-
-                @foreach($editions as $edition)
+            <div class="col-md-12" >
+                <h1 class="page-header">{{$conference->conference_title}} - {{ $conference->acronym }}</h1>
+            <div id="tableEditions" style="display:none">
+                <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                    <thead>
                     <tr>
-                        <td>{{ $edition->conference->conference_name }}</td>
-                        <td>{{ $edition->edition }}</td>
+                        <th>Editions</th>
+                        <th>Host City</th>
+                        <th>Host Country</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($editions as $edition)
+                    <tr>
+                        <td>{{ $edition->edition_name }}</td>
                         <td>{{ $edition->host_city }}</td>
                         <td>{{ $edition->host_country }}</td>
-                        <td>{{ $edition->year }}</td>
-                        <td><a href="{{ url('/search/conference/edition/' . $edition->id) }}" class="btn btn-default btn-xs"><span class="fa fa-search" aria-hidden="true"/></a></td>
                     </tr>
-                @endforeach
-            </table>
-        </div>
+                    @endforeach
+                    </tbody>
+                    </table>
+            </div>
 
+                <div id="tablePapers" style="display:none">
+                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                        <thead>
+                        <tr>
+                            <th>Paper Title</th>
+                            <th>Conference Edition</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($editions as $edition)
+                            @foreach($edition->papers as $paper)
+                            <tr>
+                                <td>{{ $paper->paper_title }}</td>
+                                <td>{{ $edition->edition_name }}</td>
+                            </tr>
+                            @endforeach
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="tableAuthors" style="display:none">
+                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                        <thead>
+                        <tr>
+                            <th>Institution Name</th>
+                            <th>Department</th>
+                            <th>Country</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($editions as $edition)
+                            @foreach($edition->papers as $paper)
+                                @foreach($paper->institutions as $institution)
+                                <tr>
+                                    <td>{{ $institution->name }}</td>
+                                    <td>{{ $institution->department }}</td>
+                                    <td>{{ $institution->country }}</td>
+                                </tr>
+                                @endforeach
+                            @endforeach
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
     </div>
+
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="js/metisMenu.min.js" type="text/javascript"></script>
+    <script src="js/sb-admin-2.min.js" type="text/javascript"></script>
+    <script>
+        $('#editions').click(function() {
+            $("#tableEditions").toggle(this.checked);
+        });
+        $('#papers').click(function() {
+            $("#tablePapers").toggle(this.checked);
+        });
+        $('#authors').click(function() {
+            $("#tableAuthors").toggle(this.checked);
+        });
+    </script>
+
 @stop

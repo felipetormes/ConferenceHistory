@@ -29,7 +29,7 @@
 
     Route::get('search/conference', 'ConferenceController@search');
 
-    Route::get('search/conference/{id}', 'ConferenceController@editions');
+    Route::get('conference/{id}', 'ConferenceController@editions');
 
     Route::get('search/conference/edition/{id}', 'ConferenceController@papers');
 
