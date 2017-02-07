@@ -69,6 +69,7 @@
                             <th>First Name</th>
                             <th>Middle Name</th>
                             <th>Last Name</th>
+                            <th>Number of Papers</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -78,6 +79,7 @@
                                     <td>{{ $person->first_name }}</td>
                                     <td>{{ $person->middle_name }}</td>
                                     <td>{{ $person->last_name }}</td>
+                                    <td>{{ $person->papers->count() }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
