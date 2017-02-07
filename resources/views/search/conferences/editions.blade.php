@@ -66,23 +66,20 @@
                     <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>
                         <tr>
-                            <th>Institution Name</th>
-                            <th>Department</th>
-                            <th>Country</th>
+                            <th>First Name</th>
+                            <th>Middle Name</th>
+                            <th>Last Name</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($editions as $edition)
-                            @foreach($edition->papers as $paper)
-                                @foreach($paper->institutions as $institution)
+
+                            @foreach($persons as $person)
                                 <tr>
-                                    <td>{{ $institution->name }}</td>
-                                    <td>{{ $institution->department }}</td>
-                                    <td>{{ $institution->country }}</td>
+                                    <td>{{ $person->first_name }}</td>
+                                    <td>{{ $person->middle_name }}</td>
+                                    <td>{{ $person->last_name }}</td>
                                 </tr>
-                                @endforeach
                             @endforeach
-                        @endforeach
                         </tbody>
                     </table>
                 </div>

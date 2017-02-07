@@ -28,7 +28,15 @@ class ConferenceController extends Controller
 
         $editions = $conference->edition;
 
-        return view('search.conferences.editions', compact('editions', 'conference'));
+        $persons = null;
+
+        foreach ($editions as $edition){
+            foreach ($edition->papers as $paper) {
+                $persons = $paper->persons->union($persons);
+            }
+        }
+
+        return view('search.conferences.editions', compact('editions', 'conference', 'persons'));
     }
 
     public function papers($id)
