@@ -18,7 +18,6 @@ class CreateKeywordsTable extends Migration
 
             $table->increments('id');
             $table->string('keyword');
-            $table->timestamps();
         });
     }
 
