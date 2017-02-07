@@ -17,8 +17,8 @@ class CreateConferencesTable extends Migration
             $table->engine = 'InnoDB';
 
             $table->increments('id');
-            $table->string('conference_title', 100);
-            $table->string('acronym', 20);
+            $table->string('conference_title', 100)->unique();
+            $table->string('acronym', 20)->unique();
         });
     }
 

@@ -18,7 +18,7 @@ class CreateEditionsTable extends Migration
 
             $table->increments('id');
             $table->integer('conference_id')->unsigned();
-            $table->string('edition_name', 500);
+            $table->string('edition_name', 500)->unique();
             $table->string('host_city');
             $table->string('host_country');
 

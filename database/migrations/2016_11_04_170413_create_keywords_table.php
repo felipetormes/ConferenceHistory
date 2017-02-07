@@ -17,7 +17,7 @@ class CreateKeywordsTable extends Migration
             $table->engine = 'InnoDB';
 
             $table->increments('id');
-            $table->string('keyword');
+            $table->string('keyword')->unique();
         });
     }
 
