@@ -26,7 +26,7 @@ class CreateAuthorsTable extends Migration
                 ->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('institution_id')->references('id')->on('institutions')
                 ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('person_id')->references('id')->on('persons')
+            $table->foreign('person_id')->references('id')->on('people')
                 ->onUpdate('cascade')->onDelete('cascade');
         });
     }
