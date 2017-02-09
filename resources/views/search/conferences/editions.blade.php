@@ -47,6 +47,7 @@
                         <tr>
                             <th>Paper Title</th>
                             <th>Conference Edition</th>
+                            <th>Keywords</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -55,6 +56,11 @@
                             <tr>
                                 <td>{{ $paper->paper_title }}</td>
                                 <td>{{ $edition->edition_name }}</td>
+                                <td>
+                                    @foreach($paper->keywords as $keyword)
+                                        {{ $keyword->keyword.',' }}
+                                    @endforeach
+                                </td>
                             </tr>
                             @endforeach
                         @endforeach
