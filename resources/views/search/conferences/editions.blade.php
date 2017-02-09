@@ -27,6 +27,7 @@
                         <th>Editions</th>
                         <th>Host City</th>
                         <th>Host Country</th>
+                        <th>Number of Papers</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -35,6 +36,7 @@
                         <td>{{ $edition->edition_name }}</td>
                         <td>{{ $edition->host_city }}</td>
                         <td>{{ $edition->host_country }}</td>
+                        <td>{{ $edition->papers->count() }}</td>
                     </tr>
                     @endforeach
                     </tbody>
