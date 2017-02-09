@@ -17,7 +17,7 @@ class CreateInstitutionsTables extends Migration
             $table->engine = 'InnoDB';
 
             $table->increments('id');
-            $table->string('name', 200);
+            $table->string('institution_name', 200);
             $table->string('department', 200)->nullable();
             $table->string('country', 50);
         });
