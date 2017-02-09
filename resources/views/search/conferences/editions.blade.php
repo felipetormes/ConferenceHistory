@@ -32,7 +32,7 @@
                     <tbody>
                     @foreach($editions as $edition)
                     <tr>
-                        <td>{{ $edition->name }}</td>
+                        <td>{{ $edition->edition_name }}</td>
                         <td>{{ $edition->host_city }}</td>
                         <td>{{ $edition->host_country }}</td>
                     </tr>
@@ -54,7 +54,7 @@
                             @foreach($edition->papers as $paper)
                             <tr>
                                 <td>{{ $paper->paper_title }}</td>
-                                <td>{{ $edition->name }}</td>
+                                <td>{{ $edition->edition_name }}</td>
                             </tr>
                             @endforeach
                         @endforeach

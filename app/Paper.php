@@ -11,6 +11,7 @@ use App\Keyword;
 class Paper extends Model
 {
     protected $fillable = ['paper_title'];
+    public $timestamps = false;
 
     public function persons()
     {

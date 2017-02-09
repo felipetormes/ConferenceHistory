@@ -30,23 +30,23 @@
     <fieldset>
 
         <div class="form-group">
-            {!! Form::label('paper_title', 'Paper Title:', ['class' => 'col-md-4 control-label']) !!}
+            {!! Form::label('conference_title', 'Conference Title:', ['class' => 'col-md-4 control-label']) !!}
             <div class="col-md-4">
-                {!! Form::text('paper_title', null, ['class' => 'form-control input-md', 'placeholder' => 'Paper Title']) !!}
+                {!! Form::text('conference_title', null, ['class' => 'form-control input-md', 'placeholder' => 'Conference Title']) !!}
             </div>
         </div>
 
         <div class="form-group">
-            {!! Form::label('conference_name', 'Conference Name:', ['class' => 'col-md-4 control-label']) !!}
+            {!! Form::label('acronym', 'Acronym:', ['class' => 'col-md-4 control-label']) !!}
             <div class="col-md-4">
-                {!! Form::text('conference_name', null, ['class' => 'form-control input-md', 'placeholder' => 'Conference Name']) !!}
+                {!! Form::text('acronym', null, ['class' => 'form-control input-md', 'placeholder' => 'Acronym']) !!}
             </div>
         </div>
 
         <div class="form-group">
-            {!! Form::label('edition', 'Edition Number:', ['class' => 'col-md-4 control-label']) !!}
+            {!! Form::label('edition_name', 'Edition Name:', ['class' => 'col-md-4 control-label']) !!}
             <div class="col-md-4">
-                {!! Form::text('edition', null, ['class' => 'form-control input-md', 'placeholder' => 'Edition Number']) !!}
+                {!! Form::text('edition_name', null, ['class' => 'form-control input-md', 'placeholder' => 'Edition Name']) !!}
             </div>
         </div>
 
@@ -65,9 +65,9 @@
         </div>
 
         <div class="form-group">
-            {!! Form::label('year', 'Edition Year:', ['class' => 'col-md-4 control-label']) !!}
+            {!! Form::label('paper_title', 'Paper Title:', ['class' => 'col-md-4 control-label']) !!}
             <div class="col-md-4">
-                {!! Form::text('year', null, ['class' => 'form-control input-md', 'placeholder' => 'Edition Year']) !!}
+                {!! Form::text('paper_title', null, ['class' => 'form-control input-md', 'placeholder' => 'Paper Title']) !!}
             </div>
         </div>
     </fieldset>
@@ -101,13 +101,6 @@
         </div>
 
         <div class="form-group">
-            {!! Form::label('author_country', 'Author Coutry:', ['class' => 'col-md-4 control-label']) !!}
-            <div class="col-md-4">
-                {!! Form::text('author_country', null, ['class' => 'form-control input-md', 'placeholder' => 'Author Coutry']) !!}
-            </div>
-        </div>
-
-        <div class="form-group">
             {!! Form::label('institution_name', 'Institution Name:', ['class' => 'col-md-4 control-label']) !!}
             <div class="col-md-4">
                 {!! Form::text('institution_name', null, ['class' => 'form-control input-md', 'placeholder' => 'Institution Name']) !!}
@@ -115,16 +108,16 @@
         </div>
 
         <div class="form-group">
-            {!! Form::label('institution_country', 'Institution Country:', ['class' => 'col-md-4 control-label']) !!}
+            {!! Form::label('department', 'Department Name:', ['class' => 'col-md-4 control-label']) !!}
             <div class="col-md-4">
-                {!! Form::text('institution_country', null, ['class' => 'form-control input-md', 'placeholder' => 'Institution Country']) !!}
+                {!! Form::text('department', null, ['class' => 'form-control input-md', 'placeholder' => 'Department Name']) !!}
             </div>
         </div>
 
         <div class="form-group">
-            {!! Form::label('department_name', 'Department Name:', ['class' => 'col-md-4 control-label']) !!}
+            {!! Form::label('country', 'Institution Country:', ['class' => 'col-md-4 control-label']) !!}
             <div class="col-md-4">
-                {!! Form::text('department_name', null, ['class' => 'form-control input-md', 'placeholder' => 'Department Name']) !!}
+                {!! Form::text('country', null, ['class' => 'form-control input-md', 'placeholder' => 'Institution Country']) !!}
             </div>
         </div>
 

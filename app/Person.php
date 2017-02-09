@@ -9,6 +9,7 @@ use App\Paper;
 class Person extends Model
 {
     protected $fillable = ['first_name', 'middle_name', 'last_name'];
+    public $timestamps = false;
 
     public function institutions()
     {

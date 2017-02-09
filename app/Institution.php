@@ -9,7 +9,8 @@ use App\Paper;
 
 class Institution extends Model
 {
-    protected $fillable = ['institution_name', 'institution_country'];
+    protected $fillable = ['institution_name', 'department', 'country'];
+    public $timestamps = false;
 
     public function persons()
     {

@@ -7,7 +7,7 @@ use App\Conference;
 
 class Edition extends Model
 {
-    protected $fillable = ['edition', 'host_city', 'host_country', 'year'];
+    protected $fillable = ['edition_name', 'host_city', 'host_country'];
     public $timestamps = false;
     protected $primaryKey = 'id';
 

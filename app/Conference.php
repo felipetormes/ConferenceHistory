@@ -7,7 +7,8 @@ use App\Edition;
 
 class Conference extends Model
 {
-    protected $fillable = ['conference_name'];
+    protected $fillable = ['conference_title', 'acronym'];
+    public $timestamps = false;
 
     public function papers()
     {
