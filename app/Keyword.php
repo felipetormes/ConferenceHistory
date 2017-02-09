@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Keyword extends Model
 {
     protected $fillable = ['keyword'];
+    public $timestamps = false;
 
     public function papers()
     {

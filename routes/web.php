@@ -15,6 +15,8 @@
       //  return view('welcome');
    // });
 
+    Route::resource('/hehe', 'KeywordController');
+
     Route::resource('/', 'AppController');
 
     //Route::resource('papers', 'PaperController');
