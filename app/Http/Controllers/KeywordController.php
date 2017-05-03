@@ -47,4 +47,13 @@ class KeywordController extends Controller
 
         return redirect()->back();
     }
+
+    public function papers($id)
+    {
+        $keyword = Keyword::find($id);
+
+        $papers = $keyword->papers;
+
+        return view('search.conferences.index', compact('papers'));
+    }
 }

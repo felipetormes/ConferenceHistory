@@ -19,6 +19,8 @@
 
     Route::resource('/', 'AppController');
 
+    Route::get('keyword/{id}', 'KeywordController@papers');
+
     //Route::resource('papers', 'PaperController');
     
     Route::get('search/author', 'AuthorController@search');

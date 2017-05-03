@@ -60,7 +60,7 @@
                                 <td>{{ $edition->edition_name }}</td>
                                 <td>
                                     @foreach($paper->keywords as $keyword)
-                                        {{ $keyword->keyword.',' }}
+                                    <a href="{{ url('/keyword/' . $keyword->id) }}" class="btn btn-default btn-xs">{{ $keyword->keyword }}</a>
                                     @endforeach
                                 </td>
                             </tr>
