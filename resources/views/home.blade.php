@@ -12,45 +12,69 @@
 
     <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <div class="container">
 
-        <div class="row">
+    <div class="row">
+<div class="col-sm-2 sidebar" id="fixed">
+<div class="mini-submenu">
+  <span class="icon-bar"></span>
+  <span class="icon-bar"></span>
+  <span class="icon-bar"></span>
+</div>
+<div class="list-group">
+  <span class="list-group-item active">
+      Conferences
+      <span class="pull-right" id="slide-submenu">
+          <i class="fa fa-times"></i>
+      </span>
+  </span>
+  @foreach($conferences as $conference)
+  <a class="list-group-item">
+      {{ $conference->acronym }} <i class="fa fa-eye pull-right"></i>
+  @endforeach
+  </a>
+</div>
+</div>
 
-            <div class="col-md-3">
-                <div class="navbar-default sidebar" role="navigation">
-                    <div class="sidebar-nav navbar-collapse">
-                        <ul class="nav" id="side-menu">
+<div class="col-sm-2 list">
+</div>
 
-                            <li>
-                                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Conferences<span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    @foreach($conferences as $conference)
-                                        <li>
-                                            <a href="conference/{{ $conference->id }}">{{ $conference->conference_title }}</a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                                <!-- /.nav-second-level -->
-                            </li>
-
-                        </ul>
-                    </div>
-                    <!-- /.sidebar-collapse -->
-                </div>
-            </div>
-
-            <div class="col-md-9 list">
-
-
-                    <div class="container">
-                        <h2>You are logged in, {{ Auth::user()->name }}!</h2>
-                        <p>First, choose one or more conferences so that the data can be displayed.</p>
-                    </div>
+      <div class="col-sm-8 list">
 
 
-            </div>
+        <div id="tableEditions" >
+            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <thead>
+                <tr>
+                    <th>Paper Title</th>
+                    <th>Authors</th>
+                    <th>Conference</th>
+                    <th>Edition</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($conferences as $conference)
+                  @foreach($conference->edition as $edition)
+                    @foreach($edition->papers as $paper)
+                <tr>
+                    <td>{{ $paper->paper_title }}</td>
+                    <td>
+                      @foreach($paper->persons as $person)
+                        {{ $person->last_name }} /
+                      @endforeach
+                    </td>
+                    <td>{{ $conference->acronym }}</td>
+                    <td>{{ $edition->edition_name }}</td>
+                </tr>
+                    @endforeach
+                  @endforeach
+                @endforeach
+                </tbody>
+                </table>
+        </div>
 
-    </div>
+
+      </div>
+      </div>
 
     <script src="js/jquery.min.js" type="text/javascript"></script>
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
