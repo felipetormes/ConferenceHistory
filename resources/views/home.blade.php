@@ -68,16 +68,32 @@
                 </thead>
                 <tbody>
 
+                  @foreach($persons as $person)
+                  <?php
+                    $flag = 0;
+                  ?>
+
                   @foreach($conference->edition as $edition)
                     @foreach($edition->papers as $paper)
-                    @foreach($paper->persons as $person)
+                    @foreach($paper->persons as $person1)
+                    <?php
+                    if($person1->id == $person->id) {
+                      $flag = 1;
+                    }
+                    ?>
+
+                    @endforeach
+                    @endforeach
+                    @endforeach
+
+                @if($flag)
                 <tr>
                       <td>{{ $person->first_name }}</td>
                       <td>{{ $person->middle_name }}</td>
                       <td>{{ $person->last_name }}</td>
                       <td>
-                        @foreach($person->institutions as $institution)
-                        {{ $institution->institution_name }}
+                        @foreach($person->institutions->unique() as $institution)
+                        {{ $institution->institution_name }} /
                         @endforeach
                       </td>
                       <td>
@@ -100,8 +116,7 @@
                       </td>
                 </tr>
 
-                    @endforeach
-                    @endforeach
+                @endif
                   @endforeach
 
                 </tbody>

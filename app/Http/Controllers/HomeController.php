@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Conference;
+use App\Person;
 
 class HomeController extends Controller
 {
@@ -26,7 +27,8 @@ class HomeController extends Controller
     {
 
         $conferences = Conference::all();
+        $persons = Person::all();
 
-        return view('home', compact('conferences'));
+        return view('home', compact('conferences','persons'));
     }
 }
