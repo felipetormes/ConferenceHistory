@@ -5,6 +5,8 @@
 <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
 
+<title>Home</title>
+
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
         <div class="navbar-header">
@@ -81,123 +83,30 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Conferences</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
+          {!! Form::open([
+              'route' => 'home.store'
+          ]) !!}
         </div>
         <div class="modal-body">
           @foreach($conferences as $conference)
          <a class="list-group-item">
-            <label><input type="checkbox" id="{{ $conference->acronym }}" name="haha"/> {{ $conference->acronym }} </label>
+           {!! Form::checkbox($conference->acronym, $conference->acronym, false) !!}
+           <label> {{ $conference->acronym }} </label>
          </a>
          @endforeach
         </div>
         <div class="modal-footer">
+          {!! Form::submit('Show', ['class' => 'btn btn-primary']) !!}
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
   </div>
 </div>
+{!! Form::close() !!}
 
 </div>
-
-
-<div class="row">
-
-<div class="col-md-1 list">
-</div>
-
-<div class="col-md-10 list">
-
-@foreach($conferences as $conference)
-<div id="table{{ $conference->acronym }}" style="display:none">
-  <hr>
-  <h2 class="page-header">{{$conference->conference_title}} - {{ $conference->acronym }}</h2>
-<table id="dataTable{{ $conference->acronym }}" class="table table-striped table-bordered" cellspacing="0" width="100%">
-  <thead>
-          <tr>
-              <th>First Name</th>
-              <th>Middle Name</th>
-              <th>Last Name</th>
-              <th>Affiliation</th>
-              <th>Papers</th>
-              <th>Select</th>
-          </tr>
-          </thead>
-          <tbody>
-
-            @foreach($persons as $person)
-            <?php
-              $flag = 0;
-            ?>
-
-            @foreach($conference->edition as $edition)
-              @foreach($edition->papers as $paper)
-              @foreach($paper->persons as $person1)
-              <?php
-              if($person1->id == $person->id) {
-                $flag = 1;
-              }
-              ?>
-
-              @endforeach
-              @endforeach
-              @endforeach
-
-          @if($flag)
-          <tr>
-                <td>{{ $person->first_name }}</td>
-                <td>{{ $person->middle_name }}</td>
-                <td>{{ $person->last_name }}</td>
-                <td>
-                  @foreach($person->institutions->unique() as $institution)
-                  {{ $institution->institution_name }} /
-                  @endforeach
-                </td>
-                <td>
-
-                  <?php
-                    $aux = 0;
-                    foreach ($person->papers as $paper) {
-                      foreach ($conference->edition as $edition) {
-                        if ($paper->edition_id == $edition->id) {
-                          $aux++;
-                        }
-                      }
-                    }
-                    echo $aux;
-                  ?>
-
-                </td>
-                <td>
-                  <input type="checkbox" id="{{ $person->id }}"/>
-                </td>
-          </tr>
-
-          @endif
-            @endforeach
-
-          </tbody>
-    </table>
-  </div>
-    @endforeach
-  </div>
-</div>
-
-  @foreach($conferences as $conference)
-     <script>
-         $('#{{ $conference->acronym }}').click(function() {
-             $("#table{{ $conference->acronym }}").toggle(this.checked);
-         });
-     </script>
-   @endforeach
-
-@foreach($conferences as $conference)
-	<script>
-		$(document).ready(function() {
-			$('#dataTable{{ $conference->acronym }}').DataTable();
-		} );
-	</script>
-@endforeach

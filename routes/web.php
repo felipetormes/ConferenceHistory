@@ -1,6 +1,6 @@
     <?php
 
-/*  
+/*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -22,7 +22,7 @@
     Route::get('keyword/{id}', 'KeywordController@papers');
 
     //Route::resource('papers', 'PaperController');
-    
+
     Route::get('search/author', 'AuthorController@search');
 
     Route::get('search/author/{id}', 'AuthorController@papers');
@@ -45,7 +45,7 @@
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::resource('/home', 'HomeController');
 
     Route::get('/admin', [
         'uses' => 'AppController@getAdminPage',

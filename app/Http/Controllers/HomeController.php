@@ -23,12 +23,31 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+     public function index()
+     {
+       $conferences = Conference::all();
+       $persons = Person::all();
+
+       return view('home', compact('conferences','persons'));
+     }
+
+    public function store(Request $request)
     {
 
+        $input_conference = collect([]);
+        $conference_checked = collect([]);
+
         $conferences = Conference::all();
+        foreach($conferences as $conference) {
+          $input_conference = $input_conference->merge($request->only($conference->acronym));
+
+          $conference_checked = $conference_checked->merge(Conference::where([
+              ['acronym', '=', $input_conference[$conference->acronym]]
+          ])->get());
+        }
         $persons = Person::all();
 
-        return view('home', compact('conferences','persons'));
+        return view('search.conferences.index', compact('conferences','persons','conference_checked'));
     }
 }
