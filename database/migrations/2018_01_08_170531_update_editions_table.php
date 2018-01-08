@@ -14,8 +14,8 @@ class UpdateEditionsTable extends Migration
     public function up()
     {
       Schema::table('editions', function (Blueprint $table) {
-          $table->date('started_at');
-          $table->date('ended_at');
+          $table->date('started_at')->nullable();
+          $table->date('ended_at')->nullable();
       });
     }
 
