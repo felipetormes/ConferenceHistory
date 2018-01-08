@@ -98,6 +98,12 @@
            <label> {{ $conference->acronym }} </label>
          </a>
          @endforeach
+         <a class="list-group-item">
+           <label> Start:  </label>
+           {!! Form::date('start_date') !!}
+           <label> End:  </label>
+           {!! Form::date('end_date') !!}
+         </a>
         </div>
         <div class="modal-footer">
           {!! Form::submit('Show', ['class' => 'btn btn-primary']) !!}

@@ -98,6 +98,12 @@
            <label> {{ $conference->acronym }} </label>
          </a>
          @endforeach
+         <a class="list-group-item">
+           <label> Start:  </label>
+           {!! Form::date('start_date') !!}
+           <label> End:  </label>
+           {!! Form::date('end_date') !!}
+         </a>
         </div>
         <div class="modal-footer">
           {!! Form::submit('Show', ['class' => 'btn btn-primary']) !!}
@@ -122,8 +128,8 @@
 <div id="table{{ $conference->acronym }}">
   <hr>
   <h2 class="page-header">
-    @foreach($conference_checked as $conference)
-      {{ $conference->acronym }},
+    @foreach($editions_checked as $edition)
+      {{ $edition->edition_name }},
     @endforeach
   </h2>
 <table id="dataTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -138,14 +144,13 @@
           </tr>
           </thead>
           <tbody>
-            @foreach($conference_checked as $conference)
 
             @foreach($persons as $person)
             <?php
               $flag = 0;
             ?>
 
-            @foreach($conference->edition as $edition)
+            @foreach($editions_checked as $edition)
               @foreach($edition->papers as $paper)
               @foreach($paper->persons as $person1)
               <?php
@@ -173,7 +178,7 @@
                   <?php
                     $aux = 0;
                     foreach ($person->papers as $paper) {
-                      foreach ($conference->edition as $edition) {
+                      foreach ($editions_checked as $edition) {
                         if ($paper->edition_id == $edition->id) {
                           $aux++;
                         }
@@ -189,8 +194,6 @@
           </tr>
 
           @endif
-            @endforeach
-
             @endforeach
           </tbody>
     </table>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Conference;
 use App\Person;
+use App\Edition;
 
 class HomeController extends Controller
 {
@@ -37,6 +38,9 @@ class HomeController extends Controller
 
         $input_conference = collect([]);
         $conference_checked = collect([]);
+        $editions_checked = collect([]);
+        $start_date = $request->only('start_date');
+        $end_date = $request->only('end_date');
 
         $conferences = Conference::all();
         foreach($conferences as $conference) {
@@ -46,8 +50,19 @@ class HomeController extends Controller
               ['acronym', '=', $input_conference[$conference->acronym]]
           ])->get());
         }
+
+        foreach($conference_checked as $conference) {
+          foreach($conference->edition as $edition) {
+            $editions_checked = $editions_checked->merge($edition->where([
+                ['started_at', '>', $start_date['start_date']],
+                ['ended_at', '<', $end_date['end_date']],
+                ['edition_name', '=', $edition->edition_name]
+            ])->get());
+          }
+        }
+
         $persons = Person::all();
 
-        return view('search.conferences.index', compact('conferences','persons','conference_checked'));
+        return view('search.conferences.index', compact('conferences','persons','conference_checked','editions_checked'));
     }
 }
