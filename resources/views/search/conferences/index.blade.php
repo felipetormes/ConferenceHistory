@@ -4,6 +4,7 @@
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
+<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 <title>Home</title>
 
@@ -75,9 +76,6 @@
 </div>
 
 <div class="col-md-1 list">
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Edit
-  </button>
 
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -126,12 +124,19 @@
 <div class="col-md-10 list">
 
 <div id="table{{ $conference->acronym }}">
-  <hr>
-  <h2 class="page-header">
+  <h3 class="page-header">
     @foreach($editions_checked as $edition)
-      {{ $edition->edition_name }},
+      @if ($loop->last)
+        {{ $edition->edition_name }}
+      @else
+        {{ $edition->edition_name }},
+      @endif
     @endforeach
-  </h2>
+
+    <a data-toggle="modal" data-target="#exampleModal" href="">
+      <i class="fa fa-pencil" aria-hidden="true" style="color:#C0C0C0;"></i>
+    </a>
+  </h3>
 <table id="dataTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
   <thead>
           <tr>
