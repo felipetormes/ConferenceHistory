@@ -8,74 +8,73 @@
 
 <title>Home</title>
 
-<nav class="navbar navbar-default navbar-static-top">
-    <div class="container">
-        <div class="navbar-header">
-
-            <!-- Collapsed Hamburger -->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                <span class="sr-only">Toggle Navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-
-            <!-- Branding Image -->
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name') }}
-            </a>
-        </div>
-
-        <div class="collapse navbar-collapse" id="app-navbar-collapse">
-            <!-- Left Side Of Navbar -->
-            <ul class="nav navbar-nav">
-                &nbsp;
-            </ul>
-
-            <!-- Right Side Of Navbar -->
-            <ul class="nav navbar-nav navbar-right">
-                <!-- Authentication Links -->
-                @if (Auth::guest())
-                    <li><a href="{{ url('#about') }}">About</a></li>
-                    <li><a href="{{ url('#contact') }}">Contact</a></li>
-                    <li><a href="{{ url('/login') }}">Login</a></li>
-                    <li><a href="{{ url('/register') }}">Register</a></li>
-                @else
-                    <li><a href="{{ url('/home') }}">Dashboard</a></li>
-                    <li><a href="{{ url('#about') }}">About</a></li>
-                    <li><a href="{{ url('#contact') }}">Contact</a></li>
-                    <li><a href="{{ url('/admin') }}">Admin</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
-
-                        <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a href="{{ url('/logout') }}"
-                                    onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
-
-                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
-                @endif
-            </ul>
-        </div>
-    </div>
-</nav>
-
 <div class="row">
 
-<div class="col-md-1 list">
+      <div class="col-md-3 list">
+        <a href="{{ url('/') }}" style="color:#000000; text-decoration:none;">
+          <h2> &ensp; {{ config('app.name') }}</h2>
+        </a>
+      </div>
 </div>
 
-<div class="col-md-1 list">
+<h3>&ensp;
+
+  @foreach($editions_checked as $edition)
+    @if ($loop->last)
+      {{ $edition->edition_name }}
+    @else
+      {{ $edition->edition_name }},
+    @endif
+  @endforeach
+
+<a data-toggle="modal" data-target="#exampleModal" href="">
+  <i class="fa fa-pencil" aria-hidden="true" style="color:#C0C0C0;"></i>
+</a>
+
+</h3>
+
+<div class="collapse navbar-collapse" id="app-navbar-collapse">
+  <!-- Left Side Of Navbar -->
+  <ul class="nav navbar-nav">
+      <li><a href="{{ url('/home') }}" style="color:#000000;"><i class="fa fa-home"></i> Dashboard</a></li>
+      <li><a href="{{ url('#') }}" style="color:#000000;"><i class="fa fa-users"></i> Authors</a></li>
+      <li><a href="{{ url('#') }}" style="color:#000000;"><i class="fa fa-building"></i> Intitutions</a></li>
+      <li><a href="{{ url('#') }}" style="color:#000000;"><i class="fa fa-book"></i> Editions</a></li>
+  </ul>
+
+  <!-- Right Side Of Navbar -->
+  <ul class="nav navbar-nav navbar-right">
+      <!-- Authentication Links -->
+      @if (Auth::guest())
+          <li><a href="{{ url('#about') }}" style="color:#000000;">About</a></li>
+          <li><a href="{{ url('/login') }}" style="color:#000000;">Login</a></li>
+          <li><a href="{{ url('/register') }}" style="color:#000000;">Register</a></li>
+      @else
+          <li><a href="{{ url('#about') }}" style="color:#000000;">About</a></li>
+          <li><a href="{{ url('/admin') }}" style="color:#000000;">Admin</a></li>
+          <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="color:#000000;">
+                  {{ Auth::user()->name }} <span class="caret"></span>
+              </a>
+
+              <ul class="dropdown-menu" role="menu">
+                  <li>
+                      <a href="{{ url('/logout') }}"
+                          onclick="event.preventDefault();
+                                   document.getElementById('logout-form').submit();">
+                          Logout
+                      </a>
+
+                      <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                          {{ csrf_field() }}
+                      </form>
+                  </li>
+              </ul>
+          </li>
+      @endif
+  </ul>
+</div>
+<hr>
 
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -110,10 +109,7 @@
       </div>
     </div>
   </div>
-</div>
 {!! Form::close() !!}
-
-</div>
 
 
 <div class="row">
@@ -124,19 +120,6 @@
 <div class="col-md-10 list">
 
 <div id="table{{ $conference->acronym }}">
-  <h3 class="page-header">
-    @foreach($editions_checked as $edition)
-      @if ($loop->last)
-        {{ $edition->edition_name }}
-      @else
-        {{ $edition->edition_name }},
-      @endif
-    @endforeach
-
-    <a data-toggle="modal" data-target="#exampleModal" href="">
-      <i class="fa fa-pencil" aria-hidden="true" style="color:#C0C0C0;"></i>
-    </a>
-  </h3>
 <table id="dataTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
   <thead>
           <tr>
