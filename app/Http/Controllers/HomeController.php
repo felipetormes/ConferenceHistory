@@ -54,8 +54,8 @@ class HomeController extends Controller
         foreach($conference_checked as $conference) {
           foreach($conference->edition as $edition) {
             $editions_checked = $editions_checked->merge($edition->where([
-                ['started_at', '>', $start_date['start_date']],
-                ['ended_at', '<', $end_date['end_date']],
+                ['started_at', '>=', $start_date['start_date']],
+                ['ended_at', '<=', $end_date['end_date']],
                 ['edition_name', '=', $edition->edition_name]
             ])->get());
           }
