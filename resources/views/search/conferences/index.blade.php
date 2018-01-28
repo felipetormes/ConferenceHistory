@@ -19,13 +19,15 @@
 
 <h3>&ensp;
 
-  @foreach($editions_checked as $edition)
+  @foreach($conference_checked as $conference)
     @if ($loop->last)
-      {{ $edition->edition_name }}
+      {{ $conference->acronym }} -
     @else
-      {{ $edition->edition_name }},
+      {{ $conference->acronym }},
     @endif
   @endforeach
+
+  {{ $start_date}}-{{ $end_date }}
 
 <a data-toggle="modal" data-target="#exampleModal" href="">
   <i class="fa fa-pencil" aria-hidden="true" style="color:#C0C0C0;"></i>
@@ -133,55 +135,20 @@
           </thead>
           <tbody>
 
-            @foreach($persons as $person)
-            <?php
-              $flag = 0;
-            ?>
+            @foreach($persons->unique() as $person)
 
-            @foreach($editions_checked as $edition)
-              @foreach($edition->papers as $paper)
-              @foreach($paper->persons as $person1)
-              <?php
-              if($person1->id == $person->id) {
-                $flag = 1;
-              }
-              ?>
 
-              @endforeach
-              @endforeach
-              @endforeach
 
-          @if($flag)
           <tr>
                 <td>{{ $person->first_name }}</td>
                 <td>{{ $person->middle_name }}</td>
                 <td>{{ $person->last_name }}</td>
-                <td>
-                  @foreach($person->institutions->unique() as $institution)
-                  {{ $institution->institution_name }} /
-                  @endforeach
-                </td>
-                <td>
-
-                  <?php
-                    $aux = 0;
-                    foreach ($person->papers as $paper) {
-                      foreach ($editions_checked as $edition) {
-                        if ($paper->edition_id == $edition->id) {
-                          $aux++;
-                        }
-                      }
-                    }
-                    echo $aux;
-                  ?>
-
-                </td>
-                <td>
-                  <input type="checkbox" id="{{ $person->id }}"/>
-                </td>
+                <td>{{ $person->institution_name }}</td>
+                <td>{{ $person->numPapers }}</td>
+                <td><input type="checkbox" id="{{ $person->last_name }}"/></td>
           </tr>
 
-          @endif
+
             @endforeach
           </tbody>
     </table>
