@@ -135,7 +135,7 @@
           </thead>
           <tbody>
 
-            @foreach($persons->unique() as $person)
+            @foreach($persons as $person)
 
 
 

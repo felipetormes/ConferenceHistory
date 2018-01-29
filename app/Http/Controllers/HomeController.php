@@ -39,6 +39,7 @@ class HomeController extends Controller
         $input_conference = collect([]);
         $conference_checked = collect([]);
         $persons = collect([]);
+        $conf = '';
         $start_date = $request->only('start_date');
         $end_date = $request->only('end_date');
 
@@ -52,18 +53,30 @@ class HomeController extends Controller
           ])->get());
         }
 
+        $i = 1;
+        $len = count($conference_checked);
+
         foreach($conference_checked as $conference) {
-          $persons = $persons->merge(DB::select('select people.first_name, people.middle_name, people.last_name, institutions.institution_name, count(papers.id) as numPapers from people
-                                         inner join authors on authors.person_id = people.id
-                                         inner join institutions on institutions.id = authors.institution_id
-                                         inner join papers on papers.id = authors.paper_id
-                                         inner join editions on editions.id = papers.edition_id
-                                            and editions.started_at >= ?
-                                            and editions.ended_at <= ?
-                                        inner join conferences on conferences.id = editions.conference_id
-                                            and conferences.acronym = ?
-                                        group by people.id, institutions.institution_name;', array($start_date['start_date'], $end_date['end_date'], $conference->acronym)));
+          if ($i == $len) {
+            $conf = $conf. ' conferences.acronym = '. '"' . $conference->acronym . '" ';
+          }
+          else {
+            $conf = $conf. ' conferences.acronym = '. '"' . $conference->acronym . '"'. ' or ';
+          }
+          $i++;
         }
+
+          $persons = DB::select('select people.first_name, people.middle_name, people.last_name, institutions.institution_name, count(papers.id) as numPapers from people
+            inner join authors on authors.person_id = people.id
+            inner join institutions on institutions.id = authors.institution_id
+            inner join papers on papers.id = authors.paper_id
+            inner join editions on editions.id = papers.edition_id
+              and editions.started_at >= '. '"' .$start_date['start_date']. '"' .
+              ' and editions.ended_at <= '. '"' .$end_date['end_date']. '"' .
+            ' inner join conferences on conferences.id = editions.conference_id
+              and ('.$conf.
+            ') group by people.id, institutions.institution_name;');
+
 
         $start_date = substr($start_date['start_date'],0,4);
         $end_date = substr($end_date['end_date'],0,4);
