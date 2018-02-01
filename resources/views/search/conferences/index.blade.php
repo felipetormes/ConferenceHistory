@@ -11,7 +11,7 @@
 
 <div class="row">
 
-      <div class="col-md-3 list">
+      <div class="list">
         <a href="{{ url('/') }}" style="color:#000000; text-decoration:none;">
           <h2 id="title"> {{ config('app.name') }}</h2>
         </a>
@@ -112,10 +112,10 @@
 
 <div class="row">
 
-<div class="col-md-1 list">
+<div class="col-md-1 col-lg-1 col-sm-1 list">
 </div>
 
-<div class="col-md-10 list">
+<div class="col-md-10 col-lg-10 col-sm-10 list">
 
 <div id="table{{ $conference->acronym }}">
 <table id="dataTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
