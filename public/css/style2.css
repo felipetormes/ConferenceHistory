@@ -1,5 +1,5 @@
 #title {
-  margin-left: 34px;
+  margin-left: 63px;
   margin-top: 10px;
   margin-bottom: 10px;
   font-size: 32;
@@ -7,14 +7,14 @@
 
 #conferences {
   margin-top: 0px;
-  margin-left: 20px;
+  margin-left: 50px;
   margin-bottom: 3px;
   font-size: 18;
 }
 
 #dashboard {
   margin-top: 10px;
-  margin-left: 5px;
+  margin-left: 35px;
   color: #000000;
   font-size: 17;
   text-decoration: none;
@@ -54,7 +54,7 @@
 
 #login {
   position: absolute;
-  right: 50px;
+  right: 63px;
   color: #000000;
   font-size: 17;
   text-decoration: none;
