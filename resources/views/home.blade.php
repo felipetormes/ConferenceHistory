@@ -11,7 +11,7 @@
 
     <div class="row">
 
-          <div class="col-md-3 list">
+          <div class="list">
             <a href="{{ url('/') }}" style="color:#000000; text-decoration:none;">
               <h2 id="title"> {{ config('app.name') }}</h2>
             </a>
