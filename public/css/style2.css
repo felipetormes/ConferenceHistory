@@ -1,0 +1,71 @@
+#title {
+  margin-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 32;
+}
+
+#conferences {
+  margin-top: 0px;
+  margin-left: 20px;
+  margin-bottom: 3px;
+  font-size: 18;
+}
+
+#dashboard {
+  margin-top: 10px;
+  margin-left: 5px;
+  color: #000000;
+  font-size: 17;
+  text-decoration: none;
+}
+
+#authors {
+  margin-top: 10px;
+  margin-left: 25px;
+  color: #000000;
+  font-size: 17;
+  text-decoration: none;
+}
+
+#institutions {
+  margin-top: 10px;
+  margin-left: 30px;
+  color: #000000;
+  font-size: 17;
+  text-decoration: none;
+}
+
+#editions {
+  margin-top: 10px;
+  margin-left: 35px;
+  color: #000000;
+  font-size: 17;
+  text-decoration: none;
+}
+
+#about {
+  margin-top: 10px;
+  margin-left: 72em;
+  color: #000000;
+  font-size: 17;
+  text-decoration: none;
+}
+
+#login {
+  margin-top: 10px;
+  margin-left: 2em;
+  color: #000000;
+  font-size: 17;
+  text-decoration: none;
+}
+
+hr.first {
+  margin-top: 0px;
+  margin-bottom: 3px;
+}
+
+hr.second {
+  margin-top: 0px;
+  margin-bottom: 20px;
+}

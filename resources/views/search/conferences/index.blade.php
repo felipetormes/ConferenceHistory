@@ -5,6 +5,7 @@
 <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
 <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="css/style2.css" rel="stylesheet" type="text/css">
 
 <title>Home</title>
 
@@ -12,12 +13,12 @@
 
       <div class="col-md-3 list">
         <a href="{{ url('/') }}" style="color:#000000; text-decoration:none;">
-          <h2> &ensp; {{ config('app.name') }}</h2>
+          <h2 id="title"> {{ config('app.name') }}</h2>
         </a>
       </div>
 </div>
 
-<h3>&ensp;
+<h3 id="conferences">
 
   @foreach($conference_checked as $conference)
     @if ($loop->last)
@@ -32,25 +33,21 @@
 <a data-toggle="modal" data-target="#exampleModal" href="">
   <i class="fa fa-pencil" aria-hidden="true" style="color:#C0C0C0;"></i>
 </a>
-
 </h3>
+<hr class="first">
 
 <div class="collapse navbar-collapse" id="app-navbar-collapse">
   <!-- Left Side Of Navbar -->
-  <ul class="nav navbar-nav">
-      <li><a href="{{ url('/home') }}" style="color:#000000;"><i class="fa fa-home"></i> Dashboard</a></li>
-      <li><a href="{{ url('#') }}" style="color:#000000;"><i class="fa fa-users"></i> Authors</a></li>
-      <li><a href="{{ url('#') }}" style="color:#000000;"><i class="fa fa-building"></i> Intitutions</a></li>
-      <li><a href="{{ url('#') }}" style="color:#000000;"><i class="fa fa-book"></i> Editions</a></li>
-  </ul>
+      <a href="{{ url('/home') }}" id="dashboard"><i class="fa fa-home"></i> Dashboard</a>
+      <a href="{{ url('#') }}" id="authors"><i class="fa fa-users"></i> Authors</a>
+      <a href="{{ url('#') }}" id="institutions"><i class="fa fa-building"></i> Intitutions</a>
+      <a href="{{ url('#') }}" id="editions"><i class="fa fa-book"></i> Editions</a>
 
   <!-- Right Side Of Navbar -->
-  <ul class="nav navbar-nav navbar-right">
       <!-- Authentication Links -->
       @if (Auth::guest())
-          <li><a href="{{ url('#about') }}" style="color:#000000;">About</a></li>
-          <li><a href="{{ url('/login') }}" style="color:#000000;">Login</a></li>
-          <li><a href="{{ url('/register') }}" style="color:#000000;">Register</a></li>
+          <a href="{{ url('#about') }}" id="about">About</a>
+          <a href="{{ url('/login') }}" id="login">Login</a>
       @else
           <li><a href="{{ url('#about') }}" style="color:#000000;">About</a></li>
           <li><a href="{{ url('/admin') }}" style="color:#000000;">Admin</a></li>
@@ -74,9 +71,8 @@
               </ul>
           </li>
       @endif
-  </ul>
 </div>
-<hr>
+<hr class="second">
 
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
