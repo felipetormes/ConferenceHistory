@@ -26,11 +26,26 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function index()
+     public function index(Request $request)
      {
        $conferences = DB::table('conferences')->select('acronym')->get();
+       $conference_checked = collect([]);
+       $start_date = '';
+       $end_date = '';
 
-       return view('home', compact('conferences'));
+       if ($request->session()->has('conference_checked')) {
+          $conference_checked = $request->session()->get('conference_checked');
+       }
+
+       if ($request->session()->has('start_date')) {
+          $start_date = $request->session()->get('start_date');
+       }
+
+       if ($request->session()->has('end_date')) {
+          $end_date = $request->session()->get('end_date');
+       }
+
+       return view('index', compact('conferences','conference_checked','start_date','end_date'));
      }
 
     public function store(Request $request)
@@ -78,9 +93,14 @@ class HomeController extends Controller
             ') group by people.id, institutions.institution_name;');
 
 
-        $start_date = substr($start_date['start_date'],0,4);
+        $start_date = substr($start_date['start_date'],0,4).'-';
         $end_date = substr($end_date['end_date'],0,4);
 
-        return view('search.conferences.index', compact('conferences','persons','conference_checked','start_date','end_date'));
+        $request->session()->put('persons',$persons);
+        $request->session()->put('conference_checked',$conference_checked);
+        $request->session()->put('start_date',$start_date);
+        $request->session()->put('end_date',$end_date);
+
+        return view('index', compact('conferences','conference_checked','start_date','end_date'));
     }
 }
