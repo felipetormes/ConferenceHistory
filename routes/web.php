@@ -17,15 +17,15 @@
 
     Route::resource('/hehe', 'KeywordController');
 
-    Route::resource('/', 'AppController');
+    //Route::resource('/', 'AppController');
 
     Route::get('keyword/{id}', 'KeywordController@papers');
 
     //Route::resource('papers', 'PaperController');
 
-    Route::get('search/author', 'AuthorController@search');
+    //Route::get('search/author', 'AuthorController@search');
 
-    Route::get('search/author/{id}', 'AuthorController@papers');
+    //Route::get('search/author/{id}', 'AuthorController@papers');
 
     Route::get('search/paper', 'PaperController@search');
 
@@ -45,7 +45,9 @@
 
 Auth::routes();
 
-Route::resource('/home', 'HomeController');
+Route::resource('/', 'HomeController');
+
+Route::resource('/authors', 'AuthorController');
 
     Route::get('/admin', [
         'uses' => 'AppController@getAdminPage',

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Author;
+use App\Person;
 use App\Paper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -11,37 +11,91 @@ class AuthorController extends Controller
 {
     private $author;
 
-    public function __construct(Author $author)
+    public function __construct(Person $author)
     {
         $this->author = $author;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $authors = Author::all();
+      $conferences = DB::table('conferences')->select('acronym')->get();
+      $persons = collect([]);
+      $conference_checked = collect([]);
+      $start_date = '';
+      $end_date = '';
 
-        return view('authors.index', compact('authors'));
+      if ($request->session()->has('persons')) {
+         $persons = $request->session()->get('persons');
+      }
+
+      if ($request->session()->has('conference_checked')) {
+         $conference_checked = $request->session()->get('conference_checked');
+      }
+
+      if ($request->session()->has('start_date')) {
+         $start_date = $request->session()->get('start_date');
+      }
+
+      if ($request->session()->has('end_date')) {
+         $end_date = $request->session()->get('end_date');
+      }
+
+      return view('search.authors.index', compact('conferences','persons','conference_checked','start_date','end_date'));
     }
 
-    public function papers($id)
+    public function store(Request $request)
     {
-        $author = Author::find($id);
 
-        $papers = $author->papers;
-        
-        return view('search.papers.index', compact('papers'));
-    }
+        $input_conference = collect([]);
+        $conference_checked = collect([]);
+        $persons = collect([]);
+        $conf = '';
+        $start_date = $request->only('start_date');
+        $end_date = $request->only('end_date');
 
-    public function search(Request $request){
-        $input_search = $request->only('fname');
+        $conferences = DB::table('conferences')->select('acronym')->get();
 
-        $authors = Author::where([
-            ['first_name', 'like', '%'.$input_search['fname'].'%']
-        ])->get();
+        foreach($conferences as $conference) {
+          $input_conference = $input_conference->merge($request->only($conference->acronym));
 
-        return view('search.authors.index', compact('authors'));
+          $conference_checked = $conference_checked->merge(DB::table('conferences')->where([
+              ['acronym', '=', $input_conference[$conference->acronym]]
+          ])->get());
+        }
+
+        $i = 1;
+        $len = count($conference_checked);
+
+        foreach($conference_checked as $conference) {
+          if ($i == $len) {
+            $conf = $conf. ' conferences.acronym = '. '"' . $conference->acronym . '" ';
+          }
+          else {
+            $conf = $conf. ' conferences.acronym = '. '"' . $conference->acronym . '"'. ' or ';
+          }
+          $i++;
+        }
+
+          $persons = DB::select('select people.first_name, people.middle_name, people.last_name, institutions.institution_name, count(papers.id) as numPapers from people
+            inner join authors on authors.person_id = people.id
+            inner join institutions on institutions.id = authors.institution_id
+            inner join papers on papers.id = authors.paper_id
+            inner join editions on editions.id = papers.edition_id
+              and editions.started_at >= '. '"' .$start_date['start_date']. '"' .
+              ' and editions.ended_at <= '. '"' .$end_date['end_date']. '"' .
+            ' inner join conferences on conferences.id = editions.conference_id
+              and ('.$conf.
+            ') group by people.id, institutions.institution_name;');
+
+
+        $start_date = substr($start_date['start_date'],0,4).'-';
+        $end_date = substr($end_date['end_date'],0,4);
+
+        $request->session()->put('persons',$persons);
+        $request->session()->put('conference_checked',$conference_checked);
+        $request->session()->put('start_date',$start_date);
+        $request->session()->put('end_date',$end_date);
+
+        return view('search.authors.index', compact('conferences','persons','conference_checked','start_date','end_date'));
     }
 }
-
-
-
