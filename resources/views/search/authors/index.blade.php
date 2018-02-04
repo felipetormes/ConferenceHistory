@@ -74,6 +74,8 @@
 </div>
 <hr class="second">
 
+<h3 id="subtitle"> Authors </h3>
+
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">

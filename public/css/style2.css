@@ -67,5 +67,13 @@ hr.first {
 
 hr.second {
   margin-top: 0px;
-  margin-bottom: 20px;
+  margin-bottom: 13px;
+}
+
+#subtitle {
+  margin-left: 52px;
+  margin-top: 0px;
+  margin-bottom: 30px;
+  font-size: 28;
+  color: #000000;
 }
