@@ -32,6 +32,8 @@ class HomeController extends Controller
        $conference_checked = collect([]);
        $start_date = '';
        $end_date = '';
+       $entire_start_date = '';
+       $entire_end_date = '';
 
        if ($request->session()->has('conference_checked')) {
           $conference_checked = $request->session()->get('conference_checked');
@@ -45,7 +47,15 @@ class HomeController extends Controller
           $end_date = $request->session()->get('end_date');
        }
 
-       return view('index', compact('conferences','conference_checked','start_date','end_date'));
+       if ($request->session()->has('entire_start_date')) {
+          $entire_start_date = $request->session()->get('entire_start_date');
+       }
+
+       if ($request->session()->has('entire_end_date')) {
+          $entire_end_date = $request->session()->get('entire_end_date');
+       }
+
+       return view('index', compact('conferences','conference_checked','start_date','end_date','entire_start_date','entire_end_date'));
      }
 
     public function store(Request $request)
@@ -93,6 +103,8 @@ class HomeController extends Controller
             ') group by people.id, institutions.institution_name;');
 
 
+        $entire_start_date = $start_date['start_date'];
+        $entire_end_date = $end_date['end_date'];
         $start_date = substr($start_date['start_date'],0,4).'-';
         $end_date = substr($end_date['end_date'],0,4);
 
@@ -100,7 +112,9 @@ class HomeController extends Controller
         $request->session()->put('conference_checked',$conference_checked);
         $request->session()->put('start_date',$start_date);
         $request->session()->put('end_date',$end_date);
+        $request->session()->put('entire_start_date',$entire_start_date);
+        $request->session()->put('entire_end_date',$entire_end_date);
 
-        return view('index', compact('conferences','conference_checked','start_date','end_date'));
+        return view('index', compact('conferences','conference_checked','start_date','end_date','entire_start_date','entire_end_date'));
     }
 }

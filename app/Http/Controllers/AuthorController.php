@@ -23,6 +23,8 @@ class AuthorController extends Controller
       $conference_checked = collect([]);
       $start_date = '';
       $end_date = '';
+      $entire_start_date = '';
+      $entire_end_date = '';
 
       if ($request->session()->has('persons')) {
          $persons = $request->session()->get('persons');
@@ -40,7 +42,15 @@ class AuthorController extends Controller
          $end_date = $request->session()->get('end_date');
       }
 
-      return view('search.authors.index', compact('conferences','persons','conference_checked','start_date','end_date'));
+      if ($request->session()->has('entire_start_date')) {
+         $entire_start_date = $request->session()->get('entire_start_date');
+      }
+
+      if ($request->session()->has('entire_end_date')) {
+         $entire_end_date = $request->session()->get('entire_end_date');
+      }
+
+      return view('search.authors.index', compact('conferences','persons','conference_checked','start_date','end_date','entire_start_date','entire_end_date'));
     }
 
     public function store(Request $request)
@@ -52,6 +62,8 @@ class AuthorController extends Controller
         $conf = '';
         $start_date = $request->only('start_date');
         $end_date = $request->only('end_date');
+        $entire_start_date = '';
+        $entire_end_date = '';
 
         $conferences = DB::table('conferences')->select('acronym')->get();
 
@@ -76,7 +88,7 @@ class AuthorController extends Controller
           $i++;
         }
 
-          $persons = DB::select('select people.first_name, people.middle_name, people.last_name, institutions.institution_name, count(papers.id) as numPapers from people
+          $persons = DB::select('select people.id, people.first_name, people.middle_name, people.last_name, institutions.institution_name, count(papers.id) as numPapers from people
             inner join authors on authors.person_id = people.id
             inner join institutions on institutions.id = authors.institution_id
             inner join papers on papers.id = authors.paper_id
@@ -88,6 +100,8 @@ class AuthorController extends Controller
             ') group by people.id, institutions.institution_name;');
 
 
+        $entire_start_date = $start_date['start_date'];
+        $entire_end_date = $end_date['end_date'];
         $start_date = substr($start_date['start_date'],0,4).'-';
         $end_date = substr($end_date['end_date'],0,4);
 
@@ -95,7 +109,11 @@ class AuthorController extends Controller
         $request->session()->put('conference_checked',$conference_checked);
         $request->session()->put('start_date',$start_date);
         $request->session()->put('end_date',$end_date);
+        $request->session()->put('entire_start_date',$entire_start_date);
+        $request->session()->put('entire_end_date',$entire_end_date);
 
-        return view('search.authors.index', compact('conferences','persons','conference_checked','start_date','end_date'));
+        //print_r($persons);
+
+        return view('search.authors.index', compact('conferences','persons','conference_checked','start_date','end_date','entire_start_date','entire_end_date'));
     }
 }

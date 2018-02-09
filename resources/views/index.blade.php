@@ -97,9 +97,9 @@
          @endforeach
          <a class="list-group-item">
            <label> Start:  </label>
-           {!! Form::date('start_date','', array('class' => 'form-control')) !!}
+           {!! Form::date('start_date',$entire_start_date, array('class' => 'form-control')) !!}
            <label> End:  </label>
-           {!! Form::date('end_date','', array('class' => 'form-control')) !!}
+           {!! Form::date('end_date',$entire_end_date, array('class' => 'form-control')) !!}
          </a>
         </div>
         <div class="modal-footer">
