@@ -80,7 +80,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Conferences</h5>
+          <h2 class="modal-title" id="exampleModalLabel">Conferences</h2>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -97,9 +97,9 @@
          @endforeach
          <a class="list-group-item">
            <label> Start:  </label>
-           {!! Form::date('start_date') !!}
+           {!! Form::date('start_date','', array('class' => 'form-control')) !!}
            <label> End:  </label>
-           {!! Form::date('end_date') !!}
+           {!! Form::date('end_date','', array('class' => 'form-control')) !!}
          </a>
         </div>
         <div class="modal-footer">

@@ -77,3 +77,16 @@ hr.second {
   font-size: 28;
   color: #000000;
 }
+
+input[type="date"]
+{
+    display:block;
+
+    /* Solution 1 */
+     -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    min-height: 1.2em;
+
+    /* Solution 2 */
+    /* min-width: 96%; */
+}
