@@ -88,16 +88,16 @@ class AuthorController extends Controller
           $i++;
         }
 
-          $persons = DB::select('select people.id, people.first_name, people.middle_name, people.last_name, institutions.institution_name, count(papers.id) as numPapers from people
-            inner join authors on authors.person_id = people.id
-            inner join institutions on institutions.id = authors.institution_id
-            inner join papers on papers.id = authors.paper_id
-            inner join editions on editions.id = papers.edition_id
-              and editions.started_at >= '. '"' .$start_date['start_date']. '"' .
-              ' and editions.ended_at <= '. '"' .$end_date['end_date']. '"' .
-            ' inner join conferences on conferences.id = editions.conference_id
-              and ('.$conf.
-            ') group by people.id, institutions.institution_name;');
+        $persons = DB::select('select people.first_name, people.middle_name, people.last_name, GROUP_CONCAT(DISTINCT institutions.institution_name) as institution_name, count(papers.id) as numPapers from people
+          inner join authors on authors.person_id = people.id
+          inner join institutions on institutions.id = authors.institution_id
+          inner join papers on papers.id = authors.paper_id
+          inner join editions on editions.id = papers.edition_id
+            and editions.started_at >= '. '"' .$start_date['start_date']. '"' .
+            ' and editions.ended_at <= '. '"' .$end_date['end_date']. '"' .
+          ' inner join conferences on conferences.id = editions.conference_id
+            and ('.$conf.
+          ') group by people.id;');
 
 
         $entire_start_date = $start_date['start_date'];
@@ -105,12 +105,12 @@ class AuthorController extends Controller
         $start_date = substr($start_date['start_date'],0,4).'-';
         $end_date = substr($end_date['end_date'],0,4);
 
-        $request->session()->put('persons',$persons);
-        $request->session()->put('conference_checked',$conference_checked);
-        $request->session()->put('start_date',$start_date);
-        $request->session()->put('end_date',$end_date);
-        $request->session()->put('entire_start_date',$entire_start_date);
-        $request->session()->put('entire_end_date',$entire_end_date);
+        $request->session()->set('persons',$persons);
+        $request->session()->set('conference_checked',$conference_checked);
+        $request->session()->set('start_date',$start_date);
+        $request->session()->set('end_date',$end_date);
+        $request->session()->set('entire_start_date',$entire_start_date);
+        $request->session()->set('entire_end_date',$entire_end_date);
 
         //print_r($persons);
 
